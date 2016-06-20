@@ -5,10 +5,13 @@ import { Provider } from 'react-redux';
 import store, { history } from './store';
 
 
+import './stylesheets/main.scss';
+
 import App from './components/App';
 import Single from './components/Single';
 import PhotoGrid from './components/PhotoGrid';
 import WordResult from './components/WordResult';
+
 
 const app = document.getElementById('app');
 ReactDOM.render(
