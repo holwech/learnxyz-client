@@ -1,3 +1,10 @@
+export function searchWordInputChange(input) {
+	return {
+		type: 'SEARCH_WORD_INPUT_CHANGE',
+		input
+	};
+}
+
 export function increment(index ) {
 	return {
 		type: 'INCREMENT_LIKES',
