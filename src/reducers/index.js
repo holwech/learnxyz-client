@@ -3,8 +3,8 @@ import { routerReducer } from 'react-router-redux';
 
 import posts from './posts';
 import comments from './comments';
-import words from './words';
+import searchWordReducers from './searchWordReducers';
 
-const RootReducer = combineReducers({posts, comments, words, routing: routerReducer});
+const RootReducer = combineReducers({posts, comments, searchWordReducers, routing: routerReducer});
 
 export default RootReducer;
