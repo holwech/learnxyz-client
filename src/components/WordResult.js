@@ -6,6 +6,7 @@ export default class WordResult extends React.Component {
 	render() {
 		return (
 			<div class="word-list">
+			{this.props.searchWordInput}
 			{this.props.words.map((val) =>
 					<Panel key={val.id} word={val.word} /> 
 			)}	

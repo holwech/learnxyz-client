@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import * as actionCreators from '../actions/actionCreators';
 import Main from './Main';
 
+// Map reducer state to props
 function mapStateToProps(state) {
 	return {
 		posts: state.posts,
 		comments: state.comments,
-		words: state.words
+		words: state.words,
+		searchWord: state.searchWordReducer
 	}
 }
 

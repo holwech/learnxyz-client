@@ -1,7 +1,7 @@
-export function searchWordInputChange(input) {
+export function searchWordInputChange(searchWordInput) {
 	return {
 		type: 'SEARCH_WORD_INPUT_CHANGE',
-		input
+		searchWordInput
 	};
 }
 
