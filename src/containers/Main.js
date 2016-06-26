@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link  } from 'react-router';
 
-import TopNav from './TopNav';
+import TopNav from '../components/TopNav';
 
 export default class Main extends React.Component {
 	searchInputChange = (event) => {
@@ -10,8 +10,12 @@ export default class Main extends React.Component {
 	render() {
 		return (
 			<div>
-				<TopNav handleChange={this.searchInputChange} />	
-				<p>{this.props.searchWord.searchWordInput}</p>
+				<TopNav 
+					handleChange={this.searchInputChange}
+					onFocus={this.props.searchWordFocus}
+					onBlur={this.props.searchWordBlur}
+					inFocus={this.props.searchWord.focus}
+				/>	
 				{React.cloneElement(this.props.children, this.props)}
 			</div>
 		);	

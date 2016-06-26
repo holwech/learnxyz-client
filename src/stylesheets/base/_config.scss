@@ -1,0 +1,16 @@
+a:link {
+	color: $base-color; 
+}
+
+a:link, a:visited, a:hover, a:active {
+	text-decoration: none;
+}
+
+.highlight {
+	background-color: yellow;
+}
+
+.hidden {
+	display: none !important;
+}
+

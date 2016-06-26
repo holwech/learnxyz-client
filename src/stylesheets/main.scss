@@ -8,11 +8,11 @@
 // Base
 @import 'base/normalize';
 @import 'base/typography';
-@import 'base/config';
 
 // Layout
 @import 'layout/grid';
 @import 'layout/top-nav';
+@import 'layout/footer';
 
 // Components
 @import 'components/panel';
@@ -22,3 +22,4 @@
 
 
 // Themes
+@import 'base/config';
