@@ -9,7 +9,7 @@ function mapStateToProps(state) {
 		posts: state.posts,
 		comments: state.comments,
 		words: state.words,
-		searchWord: state.searchWordReducer
+		search: state.search
 	}
 }
 

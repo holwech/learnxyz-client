@@ -2,6 +2,7 @@ import React from 'react';
 import { Link  } from 'react-router';
 
 import TopNav from '../components/TopNav';
+import Languages from '../containers/Languages';
 
 export default class Main extends React.Component {
 	searchInputChange = (event) => {
@@ -14,9 +15,13 @@ export default class Main extends React.Component {
 					handleChange={this.searchInputChange}
 					onFocus={this.props.searchWordFocus}
 					onBlur={this.props.searchWordBlur}
-					inFocus={this.props.searchWord.focus}
+					inFocus={this.props.search.wordFocus}
 				/>	
-				{React.cloneElement(this.props.children, this.props)}
+				<div class='row'>
+					<Languages />	
+					<div class='col-1 empty'></div>
+					{React.cloneElement(this.props.children, this.props)}
+				</div>
 			</div>
 		);	
 	}	

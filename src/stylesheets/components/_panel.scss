@@ -2,10 +2,10 @@
 	display: table;
 	margin: 0 auto;
 	border: $border-width solid $border-color;
-	width: 50%;
+	width: 100%;
 	border-radius: $border-radius;
 	padding: 5px;
-	margin-top: 15px;
+	margin-bottom: 15px;
 	@include box-shadow(8px,8px,5px,-6px,rgba(0,0,0,0.17))
 	&:hover {
 		border-color: $border-hover-color;

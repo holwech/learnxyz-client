@@ -1,4 +1,4 @@
-function searchWord(state = {searchWordInput: ''}, action) {
+function search(state = {searchWordInput: ''}, action) {
 	switch (action.type) {
 		case 'SEARCH_WORD_INPUT_CHANGE':
 			console.log(action.searchWordInput);
@@ -7,12 +7,12 @@ function searchWord(state = {searchWordInput: ''}, action) {
 			});
 			return word;
 		case 'SEARCH_WORD_FOCUS':
-			return Object.assign({}, state, { focus: true });
+			return Object.assign({}, state, { wordFocus: true });
 		case 'SEARCH_WORD_BLUR':
-			return Object.assign({}, state, { focus: false });
+			return Object.assign({}, state, { wordFocus: false });
 		default:
 			return state;
 	}
 }
 
-export default searchWord
+export default search;

@@ -7,11 +7,13 @@ import rootReducer from './reducers/index';
 import words from './data/words';
 import posts from './data/posts';
 import comments from './data/comments';
+import languages from './data/languages';
 
 const defaultState = {
 	posts,
 	comments,
-	words
+	words,
+	languages
 };
 
 

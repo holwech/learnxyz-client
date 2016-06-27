@@ -1,11 +1,20 @@
 import React from 'react';
 
-import Results from '../components/Results';
+import Panel from '../components/Panel';
 
 export default class WordResult extends React.Component {
 	render() {
 		return (
-				<Results words={this.props.words} highlight={this.props.searchWord.searchWordInput}/>
+			<div class='col-12'>
+			{this.props.words.map((val) =>
+					<Panel 
+						key={val.id}
+						word={val.word}
+						hidden={val.hidden}
+						highlight={this.props.search.searchWordInput} 
+					/> 
+			)}	
+			</div>
 		);
 	};
 }
