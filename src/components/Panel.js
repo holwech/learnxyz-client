@@ -4,11 +4,12 @@ import Highlight from 'react-highlighter';
 
 export default class Panel extends React.Component {
 	render() {
-		let hidden = this.props.hidden ? 'hidden' : ''
+		let hidden = this.props.hidden ? 'hidden' : '';
+		let slim = this.props.slim ? 'slim' : '';
 		return (
-			<div class={`panel ${hidden}`}>
+			<div class={`panel ${hidden} ${slim}`}>
 				<p>
-					<Highlight search={this.props.highlight}>{this.props.word}</Highlight>
+					<Highlight search={this.props.highlight}>{this.props.heading}</Highlight>
 				</p>
 			</div>						
 		);	

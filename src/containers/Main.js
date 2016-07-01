@@ -18,8 +18,11 @@ export default class Main extends React.Component {
 					inFocus={this.props.search.wordFocus}
 				/>	
 				<div class='row'>
-					<Languages />	
-					<div class='col-1 empty'></div>
+					<Languages 
+						languages={this.props.languages}
+						search={this.props.search}
+					/>	
+					<div class='col-2 empty'></div>
 					{React.cloneElement(this.props.children, this.props)}
 				</div>
 			</div>

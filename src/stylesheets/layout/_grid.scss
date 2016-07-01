@@ -14,7 +14,11 @@ $pad: 20px;
     display: table;
     clear: both;
   }
+	&-slim {
+		margin: 0px 0px 0px 0px;
+	}
 }
+
 
 [class*='col-'] {
   float: left;
