@@ -8,12 +8,14 @@ import words from './data/words';
 import posts from './data/posts';
 import comments from './data/comments';
 import languages from './data/languages';
+import settings from './data/settings';
 
 const defaultState = {
 	posts,
 	comments,
 	words,
-	languages
+	languages,
+	settings
 };
 
 

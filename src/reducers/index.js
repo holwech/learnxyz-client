@@ -6,7 +6,16 @@ import comments from './comments';
 import words from './words';
 import languages from './languages';
 import search from './search';
+import settings from './settings';
 
-const RootReducer = combineReducers({posts, comments, words, languages, search, routing: routerReducer});
+const RootReducer = combineReducers({
+	posts,
+	comments,
+	words,
+	languages,
+	search,
+	settings,
+	routing: routerReducer
+});
 
 export default RootReducer;

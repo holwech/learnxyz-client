@@ -19,7 +19,7 @@ export default class Languages extends React.Component {
 			keySelected = first;
 		}
 		return (
-			<div class='sidebar-body'>
+			<div class='col-4 sidebar-left '>
 				<input type='text' class='input-small' onChange={this.handleChange}/>
 				<Panel 
 					key={keySelected}	

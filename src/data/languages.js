@@ -1,5 +1,4 @@
-let languages = {
-	"lang": [ 
+let languages = [ 
 	{
 		"ab":{
 			"name":"Abkhaz",
@@ -1092,7 +1091,7 @@ let languages = {
 			"nativeName":"Saɯ cueŋƅ, Saw cuengh"
 		}	
 	}
-	]
-}
+]
+
 
 export default languages;

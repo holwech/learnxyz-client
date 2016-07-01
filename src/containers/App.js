@@ -10,7 +10,8 @@ function mapStateToProps(state) {
 		comments: state.comments,
 		words: state.words,
 		languages: state.languages,
-		search: state.search
+		search: state.search,
+		settings: state.settings
 	}
 }
 

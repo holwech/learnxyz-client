@@ -1,3 +1,17 @@
+export function languageSelect(language) {
+	return {
+		type: 'LANGUAGE_SELECT',
+		language
+	}
+}
+
+export function languageInputChange(languageInput) {
+	return {
+		type: 'SEARCH_LANGUAGE_CHANGE',
+		languageInput
+	}
+}
+
 export function searchWordBlur() {
 	return {
 		type: 'SEARCH_WORD_BLUR'

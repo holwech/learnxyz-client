@@ -1,6 +1,13 @@
 .sidebar-left {
-	padding-left: 8px;
 	padding-top: $top-margin;
 	background: $dark;
+	min-height: 800px;
+	padding-right: 0px;
+	margin-right: $pad;
+	.sidebar-body {
+		padding: $pad;
+	}	
+	.tab {
+		border: 0px 0px 1px 0px solid $darkest;
+	}
 }
-

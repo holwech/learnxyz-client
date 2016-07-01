@@ -2,7 +2,8 @@ import React from 'react';
 import { Link  } from 'react-router';
 
 import TopNav from '../components/TopNav';
-import Languages from '../containers/Languages';
+import Footer from '../components/Footer';
+import MainSidebar from './MainSidebar';
 
 export default class Main extends React.Component {
 	searchInputChange = (event) => {
@@ -18,12 +19,12 @@ export default class Main extends React.Component {
 					inFocus={this.props.search.wordFocus}
 				/>	
 				<div class='row'>
-					<Languages 
-						languages={this.props.languages}
-						search={this.props.search}
-					/>	
+					<MainSidebar {...this.props} />					
 					<div class='col-2 empty'></div>
 					{React.cloneElement(this.props.children, this.props)}
+				</div>
+				<div class="row">
+					<Footer class={'footer'}/>	
 				</div>
 			</div>
 		);	
