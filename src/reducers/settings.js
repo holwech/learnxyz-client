@@ -6,6 +6,10 @@ function settings(state = {}, action) {
 				language: action.language
 			});
 			return newState;
+		case 'SIDEBAR_TAB_SELECT':
+			return Object.assign({}, state, {
+				sidebarTab: action.sidebarTab
+			})
 	}
 	return state;
 }

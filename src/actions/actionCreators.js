@@ -1,3 +1,13 @@
+// === Settings
+export function sidebarTabSelect(sidebarTab) {
+	return {
+		type: 'SIDEBAR_TAB_SELECT',
+		sidebarTab
+	}
+}
+
+
+// === Languages
 export function languageSelect(language) {
 	return {
 		type: 'LANGUAGE_SELECT',
@@ -12,6 +22,7 @@ export function languageInputChange(languageInput) {
 	}
 }
 
+// === Search
 export function searchWordBlur() {
 	return {
 		type: 'SEARCH_WORD_BLUR'
@@ -31,6 +42,7 @@ export function searchWordInputChange(searchWordInput) {
 	};
 }
 
+// === Crap
 export function increment(index ) {
 	return {
 		type: 'INCREMENT_LIKES',

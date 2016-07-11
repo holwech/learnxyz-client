@@ -4,7 +4,8 @@ let settings = {
 			'name': 'English',
 			'nativeName': 'English'
 		}
-	}
+	},
+	sidebarTab: 'Language',
 }
 
 export default settings;

@@ -1,5 +1,4 @@
 .sidebar-left {
-	padding-top: $top-margin;
 	background: $dark;
 	min-height: 800px;
 	padding-right: 0px;
@@ -7,7 +6,15 @@
 	.sidebar-body {
 		padding: $pad;
 	}	
-	.tab {
-		border: 0px 0px 1px 0px solid $darkest;
+	.tab-button {
+		padding: $button-padding;
+		text-align: center;
+		background: $darker;
+		cursor: pointer;
+		@include box-shadow(inset,-69px,-82px,139px,-180px);
+		&.active {
+			background: $dark;
+			@include box-shadow(inset,0px,0px,0px,0px);
+		}
 	}
 }
