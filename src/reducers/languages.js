@@ -1,17 +1,13 @@
 function languages(state = [], action) {
 	switch (action.type) {
-		case 'SEARCH_LANGUAGE_CHANGE':
+		case 'MAIN_SIDEBAR_INPUT_CHANGE':
 			let newState = Object.assign([], state, []);
-			let regex = new RegExp(action.languageInput, 'i');
+			let regex = new RegExp(action.input, 'i');
 			newState.forEach((value, index, array) => {
-				let key = undefined;
-				for (let first in value) {
-					key = first;
-				}
-				if (value[key].name.match(regex) === null) {
-					array[index][key]['hidden'] = true;
+				if (value.name.match(regex) === null) {
+					array[index]['hidden'] = true;
 				}	else {
-					array[index][key]['hidden'] = false;
+					array[index]['hidden'] = false;
 				}
 			});
 			return newState;

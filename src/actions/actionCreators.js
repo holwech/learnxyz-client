@@ -1,4 +1,4 @@
-// === Settings
+// === Main sidebar
 export function sidebarTabSelect(sidebarTab) {
 	return {
 		type: 'SIDEBAR_TAB_SELECT',
@@ -6,23 +6,29 @@ export function sidebarTabSelect(sidebarTab) {
 	}
 }
 
-
-// === Languages
-export function languageSelect(language) {
+export function mainSidebarInputChange(input) {
 	return {
-		type: 'LANGUAGE_SELECT',
-		language
+		type: 'MAIN_SIDEBAR_INPUT_CHANGE',
+		input
 	}
 }
 
-export function languageInputChange(languageInput) {
+export function mainSidebarLanguageFieldSelect(field) {
 	return {
-		type: 'SEARCH_LANGUAGE_CHANGE',
-		languageInput
+		type: 'MAIN_SIDEBAR_LANGUAGE_FIELD_SELECT',
+		field
 	}
 }
 
-// === Search
+export function mainSidebarCategoryFieldSelect(field) {
+	return {
+		type: 'MAIN_SIDEBAR_CATEGORY_FIELD_SELECT',
+		field
+	}
+}
+
+
+// === Navbar
 export function searchWordBlur() {
 	return {
 		type: 'SEARCH_WORD_BLUR'
@@ -41,6 +47,7 @@ export function searchWordInputChange(searchWordInput) {
 		searchWordInput
 	};
 }
+
 
 // === Crap
 export function increment(index ) {

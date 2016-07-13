@@ -1,1095 +1,1095 @@
 let languages = [ 
 	{
-		"ab":{
-			"name":"Abkhaz",
-			"nativeName":"аҧсуа"
-		}
+		"key":"ab",
+		"name":"Abkhaz",
+		"nativeName":"аҧсуа"
+
 	},
 	{
-		"aa":{
-			"name":"Afar",
-			"nativeName":"Afaraf"
-		}
+		"key":"aa",
+		"name":"Afar",
+		"nativeName":"Afaraf"
+
 	},
 	{
-		"af":{
-			"name":"Afrikaans",
-			"nativeName":"Afrikaans"
-		}
+		"key":"af",
+		"name":"Afrikaans",
+		"nativeName":"Afrikaans"
+
 	},
 	{
-		"ak":{
-			"name":"Akan",
-			"nativeName":"Akan"
-		}
+		"key":"ak",
+		"name":"Akan",
+		"nativeName":"Akan"
+
 	},
 	{
-		"sq":{
-			"name":"Albanian",
-			"nativeName":"Shqip"
-		}
+		"key":"sq",
+		"name":"Albanian",
+		"nativeName":"Shqip"
+
 	},
 	{
-		"am":{
-			"name":"Amharic",
-			"nativeName":"አማርኛ"
-		}
+		"key":"am",
+		"name":"Amharic",
+		"nativeName":"አማርኛ"
+
 	},
 	{
-		"ar":{
-			"name":"Arabic",
-			"nativeName":"العربية"
-		}
+		"key":"ar",
+		"name":"Arabic",
+		"nativeName":"العربية"
+
 	},
 	{
-		"an":{
-			"name":"Aragonese",
-			"nativeName":"Aragonés"
-		}
+		"key":"an",
+		"name":"Aragonese",
+		"nativeName":"Aragonés"
+
 	},
 	{
-		"hy":{
-			"name":"Armenian",
-			"nativeName":"Հայերեն"
-		}
+		"key":"hy",
+		"name":"Armenian",
+		"nativeName":"Հայերեն"
+
 	},
 	{
-		"as":{
-			"name":"Assamese",
-			"nativeName":"অসমীয়া"
-		}
+		"key":"as",
+		"name":"Assamese",
+		"nativeName":"অসমীয়া"
+
 	},
 	{
-		"av":{
-			"name":"Avaric",
-			"nativeName":"авар мацӀ, магӀарул мацӀ"
-		}
+		"key":"av",
+		"name":"Avaric",
+		"nativeName":"авар мацӀ, магӀарул мацӀ"
+
 	},
 	{
-		"ae":{
-			"name":"Avestan",
-			"nativeName":"avesta"
-		}
+		"key":"ae",
+		"name":"Avestan",
+		"nativeName":"avesta"
+
 	},
 	{
-		"ay":{
-			"name":"Aymara",
-			"nativeName":"aymar aru"
-		}
+		"key":"ay",
+		"name":"Aymara",
+		"nativeName":"aymar aru"
+
 	},
 	{
-		"az":{
-			"name":"Azerbaijani",
-			"nativeName":"azərbaycan dili"
-		}
+		"key":"az",
+		"name":"Azerbaijani",
+		"nativeName":"azərbaycan dili"
+
 	},
 	{
-		"bm":{
-			"name":"Bambara",
-			"nativeName":"bamanankan"
-		}
+		"key":"bm",
+		"name":"Bambara",
+		"nativeName":"bamanankan"
+
 	},
 	{
-		"ba":{
-			"name":"Bashkir",
-			"nativeName":"башҡорт теле"
-		}
+		"key":"ba",
+		"name":"Bashkir",
+		"nativeName":"башҡорт теле"
+
 	},
 	{
-		"eu":{
-			"name":"Basque",
-			"nativeName":"euskara, euskera"
-		}
+		"key":"eu",
+		"name":"Basque",
+		"nativeName":"euskara, euskera"
+
 	},
 	{
-		"be":{
-			"name":"Belarusian",
-			"nativeName":"Беларуская"
-		}
+		"key":"be",
+		"name":"Belarusian",
+		"nativeName":"Беларуская"
+
 	},
 	{
-		"bn":{
-			"name":"Bengali",
-			"nativeName":"বাংলা"
-		}
+		"key":"bn",
+		"name":"Bengali",
+		"nativeName":"বাংলা"
+
 	},
 	{
-		"bh":{
-			"name":"Bihari",
-			"nativeName":"भोजपुरी"
-		}
+		"key":"bh",
+		"name":"Bihari",
+		"nativeName":"भोजपुरी"
+
 	},
 	{
-		"bi":{
-			"name":"Bislama",
-			"nativeName":"Bislama"
-		}
+		"key":"bi",
+		"name":"Bislama",
+		"nativeName":"Bislama"
+
 	},
 	{
-		"bs":{
-			"name":"Bosnian",
-			"nativeName":"bosanski jezik"
-		}
+		"key":"bs",
+		"name":"Bosnian",
+		"nativeName":"bosanski jezik"
+
 	},
 	{
-		"br":{
-			"name":"Breton",
-			"nativeName":"brezhoneg"
-		}
+		"key":"br",
+		"name":"Breton",
+		"nativeName":"brezhoneg"
+
 	},
 	{
-		"bg":{
-			"name":"Bulgarian",
-			"nativeName":"български език"
-		}
+		"key":"bg",
+		"name":"Bulgarian",
+		"nativeName":"български език"
+
 	},
 	{
-		"my":{
-			"name":"Burmese",
-			"nativeName":"ဗမာစာ"
-		}
+		"key":"my",
+		"name":"Burmese",
+		"nativeName":"ဗမာစာ"
+
 	},
 	{
-		"ca":{
-			"name":"Catalan; Valencian",
-			"nativeName":"Català"
-		}
+		"key":"ca",
+		"name":"Catalan; Valencian",
+		"nativeName":"Català"
+
 	},
 	{
-		"ch":{
-			"name":"Chamorro",
-			"nativeName":"Chamoru"
-		}
+		"key":"ch",
+		"name":"Chamorro",
+		"nativeName":"Chamoru"
+
 	},
 	{
-		"ce":{
-			"name":"Chechen",
-			"nativeName":"нохчийн мотт"
-		}
+		"key":"ce",
+		"name":"Chechen",
+		"nativeName":"нохчийн мотт"
+
 	},
 	{
-		"ny":{
-			"name":"Chichewa; Chewa; Nyanja",
-			"nativeName":"chiCheŵa, chinyanja"
-		}
+		"key":"ny",
+		"name":"Chichewa; Chewa; Nyanja",
+		"nativeName":"chiCheŵa, chinyanja"
+
 	},
 	{
-		"zh":{
-			"name":"Chinese",
-			"nativeName":"中文 (Zhōngwén), 汉语, 漢語"
-		}
+		"key":"zh",
+		"name":"Chinese",
+		"nativeName":"中文 (Zhōngwén), 汉语, 漢語"
+
 	},
 	{
-		"cv":{
-			"name":"Chuvash",
-			"nativeName":"чӑваш чӗлхи"
-		}
+		"key":"cv",
+		"name":"Chuvash",
+		"nativeName":"чӑваш чӗлхи"
+
 	},
 	{
-		"kw":{
-			"name":"Cornish",
-			"nativeName":"Kernewek"
-		}
+		"key":"kw",
+		"name":"Cornish",
+		"nativeName":"Kernewek"
+
 	},
 	{
-		"co":{
-			"name":"Corsican",
-			"nativeName":"corsu, lingua corsa"
-		}
+		"key":"co",
+		"name":"Corsican",
+		"nativeName":"corsu, lingua corsa"
+
 	},
 	{
-		"cr":{
-			"name":"Cree",
-			"nativeName":"ᓀᐦᐃᔭᐍᐏᐣ"
-		}
+		"key":"cr",
+		"name":"Cree",
+		"nativeName":"ᓀᐦᐃᔭᐍᐏᐣ"
+
 	},
 	{
-		"hr":{
-			"name":"Croatian",
-			"nativeName":"hrvatski"
-		}
+		"key":"hr",
+		"name":"Croatian",
+		"nativeName":"hrvatski"
+
 	},
 	{
-		"cs":{
-			"name":"Czech",
-			"nativeName":"česky, čeština"
-		}
+		"key":"cs",
+		"name":"Czech",
+		"nativeName":"česky, čeština"
+
 	},
 	{
-		"da":{
-			"name":"Danish",
-			"nativeName":"dansk"
-		}
+		"key":"da",
+		"name":"Danish",
+		"nativeName":"dansk"
+
 	},
 	{
-		"dv":{
-			"name":"Divehi; Dhivehi; Maldivian;",
-			"nativeName":"ދިވެހި"
-		}
+		"key":"dv",
+		"name":"Divehi; Dhivehi; Maldivian;",
+		"nativeName":"ދިވެހި"
+
 	},
 	{
-		"nl":{
-			"name":"Dutch",
-			"nativeName":"Nederlands, Vlaams"
-		}
+		"key":"nl",
+		"name":"Dutch",
+		"nativeName":"Nederlands, Vlaams"
+
 	},
 	{
-		"en":{
-			"name":"English",
-			"nativeName":"English"
-		}
+		"key":"en",
+		"name":"English",
+		"nativeName":"English"
+
 	},
 	{
-		"eo":{
-			"name":"Esperanto",
-			"nativeName":"Esperanto"
-		}
+		"key":"eo",
+		"name":"Esperanto",
+		"nativeName":"Esperanto"
+
 	},
 	{
-		"et":{
-			"name":"Estonian",
-			"nativeName":"eesti, eesti keel"
-		}
+		"key":"et",
+		"name":"Estonian",
+		"nativeName":"eesti, eesti keel"
+
 	},
 	{
-		"ee":{
-			"name":"Ewe",
-			"nativeName":"Eʋegbe"
-		}
+		"key":"ee",
+		"name":"Ewe",
+		"nativeName":"Eʋegbe"
+
 	},
 	{
-		"fo":{
-			"name":"Faroese",
-			"nativeName":"føroyskt"
-		}
+		"key":"fo",
+		"name":"Faroese",
+		"nativeName":"føroyskt"
+
 	},
 	{
-		"fj":{
-			"name":"Fijian",
-			"nativeName":"vosa Vakaviti"
-		}
+		"key":"fj",
+		"name":"Fijian",
+		"nativeName":"vosa Vakaviti"
+
 	},
 	{
-		"fi":{
-			"name":"Finnish",
-			"nativeName":"suomi, suomen kieli"
-		}
+		"key":"fi",
+		"name":"Finnish",
+		"nativeName":"suomi, suomen kieli"
+
 	},
 	{
-		"fr":{
-			"name":"French",
-			"nativeName":"français, langue française"
-		}
+		"key":"fr",
+		"name":"French",
+		"nativeName":"français, langue française"
+
 	},
 	{
-		"ff":{
-			"name":"Fula; Fulah; Pulaar; Pular",
-			"nativeName":"Fulfulde, Pulaar, Pular"
-		}
+		"key":"ff",
+		"name":"Fula; Fulah; Pulaar; Pular",
+		"nativeName":"Fulfulde, Pulaar, Pular"
+
 	},
 	{
-		"gl":{
-			"name":"Galician",
-			"nativeName":"Galego"
-		}
+		"key":"gl",
+		"name":"Galician",
+		"nativeName":"Galego"
+
 	},
 	{
-		"ka":{
-			"name":"Georgian",
-			"nativeName":"ქართული"
-		}
+		"key":"ka",
+		"name":"Georgian",
+		"nativeName":"ქართული"
+
 	},
 	{
-		"de":{
-			"name":"German",
-			"nativeName":"Deutsch"
-		}
+		"key":"de",
+		"name":"German",
+		"nativeName":"Deutsch"
+
 	},
 	{
-		"el":{
-			"name":"Greek, Modern",
-			"nativeName":"Ελληνικά"
-		}
+		"key":"el",
+		"name":"Greek, Modern",
+		"nativeName":"Ελληνικά"
+
 	},
 	{
-		"gn":{
-			"name":"Guaraní",
-			"nativeName":"Avañeẽ"
-		}
+		"key":"gn",
+		"name":"Guaraní",
+		"nativeName":"Avañeẽ"
+
 	},
 	{
-		"gu":{
-			"name":"Gujarati",
-			"nativeName":"ગુજરાતી"
-		}
+		"key":"gu",
+		"name":"Gujarati",
+		"nativeName":"ગુજરાતી"
+
 	},
 	{
-		"ht":{
-			"name":"Haitian; Haitian Creole",
-			"nativeName":"Kreyòl ayisyen"
-		}
+		"key":"ht",
+		"name":"Haitian; Haitian Creole",
+		"nativeName":"Kreyòl ayisyen"
+
 	},
 	{
-		"ha":{
-			"name":"Hausa",
-			"nativeName":"Hausa, هَوُسَ"
-		}
+		"key":"ha",
+		"name":"Hausa",
+		"nativeName":"Hausa, هَوُسَ"
+
 	},
 	{
-		"he":{
-			"name":"Hebrew (modern)",
-			"nativeName":"עברית"
-		}
+		"key":"he",
+		"name":"Hebrew (modern)",
+		"nativeName":"עברית"
+
 	},
 	{
-		"hz":{
-			"name":"Herero",
-			"nativeName":"Otjiherero"
-		}
+		"key":"hz",
+		"name":"Herero",
+		"nativeName":"Otjiherero"
+
 	},
 	{
-		"hi":{
-			"name":"Hindi",
-			"nativeName":"हिन्दी, हिंदी"
-		}
+		"key":"hi",
+		"name":"Hindi",
+		"nativeName":"हिन्दी, हिंदी"
+
 	},
 	{
-		"ho":{
-			"name":"Hiri Motu",
-			"nativeName":"Hiri Motu"
-		}
+		"key":"ho",
+		"name":"Hiri Motu",
+		"nativeName":"Hiri Motu"
+
 	},
 	{
-		"hu":{
-			"name":"Hungarian",
-			"nativeName":"Magyar"
-		}
+		"key":"hu",
+		"name":"Hungarian",
+		"nativeName":"Magyar"
+
 	},
 	{
-		"ia":{
-			"name":"Interlingua",
-			"nativeName":"Interlingua"
-		}
+		"key":"ia",
+		"name":"Interlingua",
+		"nativeName":"Interlingua"
+
 	},
 	{
-		"id":{
-			"name":"Indonesian",
-			"nativeName":"Bahasa Indonesia"
-		}
+		"key":"id",
+		"name":"Indonesian",
+		"nativeName":"Bahasa Indonesia"
+
 	},
 	{
-		"ie":{
-			"name":"Interlingue",
-			"nativeName":"Originally called Occidental; then Interlingue after WWII"
-		}
+		"key":"ie",
+		"name":"Interlingue",
+		"nativeName":"Originally called Occidental; then Interlingue after WWII"
+
 	},
 	{
-		"ga":{
-			"name":"Irish",
-			"nativeName":"Gaeilge"
-		}
+		"key":"ga",
+		"name":"Irish",
+		"nativeName":"Gaeilge"
+
 	},
 	{
-		"ig":{
-			"name":"Igbo",
-			"nativeName":"Asụsụ Igbo"
-		}
+		"key":"ig",
+		"name":"Igbo",
+		"nativeName":"Asụsụ Igbo"
+
 	},
 	{
-		"ik":{
-			"name":"Inupiaq",
-			"nativeName":"Iñupiaq, Iñupiatun"
-		}
+		"key":"ik",
+		"name":"Inupiaq",
+		"nativeName":"Iñupiaq, Iñupiatun"
+
 	},
 	{
-		"io":{
-			"name":"Ido",
-			"nativeName":"Ido"
-		}
+		"key":"io",
+		"name":"Ido",
+		"nativeName":"Ido"
+
 	},
 	{
-		"is":{
-			"name":"Icelandic",
-			"nativeName":"Íslenska"
-		}
+		"key":"is",
+		"name":"Icelandic",
+		"nativeName":"Íslenska"
+
 	},
 	{
-		"it":{
-			"name":"Italian",
-			"nativeName":"Italiano"
-		}
+		"key":"it",
+		"name":"Italian",
+		"nativeName":"Italiano"
+
 	},
 	{
-		"iu":{
-			"name":"Inuktitut",
-			"nativeName":"ᐃᓄᒃᑎᑐᑦ"
-		}
+		"key":"iu",
+		"name":"Inuktitut",
+		"nativeName":"ᐃᓄᒃᑎᑐᑦ"
+
 	},
 	{
-		"ja":{
-			"name":"Japanese",
-			"nativeName":"日本語 (にほんご／にっぽんご)"
-		}
+		"key":"ja",
+		"name":"Japanese",
+		"nativeName":"日本語 (にほんご／にっぽんご)"
+
 	},
 	{
-		"jv":{
-			"name":"Javanese",
-			"nativeName":"basa Jawa"
-		}
+		"key":"jv",
+		"name":"Javanese",
+		"nativeName":"basa Jawa"
+
 	},
 	{
-		"kl":{
-			"name":"Kalaallisut, Greenlandic",
-			"nativeName":"kalaallisut, kalaallit oqaasii"
-		}
+		"key":"kl",
+		"name":"Kalaallisut, Greenlandic",
+		"nativeName":"kalaallisut, kalaallit oqaasii"
+
 	},
 	{
-		"kn":{
-			"name":"Kannada",
-			"nativeName":"ಕನ್ನಡ"
-		}
+		"key":"kn",
+		"name":"Kannada",
+		"nativeName":"ಕನ್ನಡ"
+
 	},
 	{
-		"kr":{
-			"name":"Kanuri",
-			"nativeName":"Kanuri"
-		}
+		"key":"kr",
+		"name":"Kanuri",
+		"nativeName":"Kanuri"
+
 	},
 	{
-		"ks":{
-			"name":"Kashmiri",
-			"nativeName":"कश्मीरी, كشميري‎"
-		}
+		"key":"ks",
+		"name":"Kashmiri",
+		"nativeName":"कश्मीरी, كشميري‎"
+
 	},
 	{
-		"kk":{
-			"name":"Kazakh",
-			"nativeName":"Қазақ тілі"
-		}
+		"key":"kk",
+		"name":"Kazakh",
+		"nativeName":"Қазақ тілі"
+
 	},
 	{
-		"km":{
-			"name":"Khmer",
-			"nativeName":"ភាសាខ្មែរ"
-		}
+		"key":"km",
+		"name":"Khmer",
+		"nativeName":"ភាសាខ្មែរ"
+
 	},
 	{
-		"ki":{
-			"name":"Kikuyu, Gikuyu",
-			"nativeName":"Gĩkũyũ"
-		}
+		"key":"ki",
+		"name":"Kikuyu, Gikuyu",
+		"nativeName":"Gĩkũyũ"
+
 	},
 	{
-		"rw":{
-			"name":"Kinyarwanda",
-			"nativeName":"Ikinyarwanda"
-		}
+		"key":"rw",
+		"name":"Kinyarwanda",
+		"nativeName":"Ikinyarwanda"
+
 	},
 	{
-		"ky":{
-			"name":"Kirghiz, Kyrgyz",
-			"nativeName":"кыргыз тили"
-		}
+		"key":"ky",
+		"name":"Kirghiz, Kyrgyz",
+		"nativeName":"кыргыз тили"
+
 	},
 	{
-		"kv":{
-			"name":"Komi",
-			"nativeName":"коми кыв"
-		}
+		"key":"kv",
+		"name":"Komi",
+		"nativeName":"коми кыв"
+
 	},
 	{
-		"kg":{
-			"name":"Kongo",
-			"nativeName":"KiKongo"
-		}
+		"key":"kg",
+		"name":"Kongo",
+		"nativeName":"KiKongo"
+
 	},
 	{
-		"ko":{
-			"name":"Korean",
-			"nativeName":"한국어 (韓國語), 조선말 (朝鮮語)"
-		}
+		"key":"ko",
+		"name":"Korean",
+		"nativeName":"한국어 (韓國語), 조선말 (朝鮮語)"
+
 	},
 	{
-		"ku":{
-			"name":"Kurdish",
-			"nativeName":"Kurdî, كوردی‎"
-		}
+		"key":"ku",
+		"name":"Kurdish",
+		"nativeName":"Kurdî, كوردی‎"
+
 	},
 	{
-		"kj":{
-			"name":"Kwanyama, Kuanyama",
-			"nativeName":"Kuanyama"
-		}
+		"key":"kj",
+		"name":"Kwanyama, Kuanyama",
+		"nativeName":"Kuanyama"
+
 	},
 	{
-		"la":{
-			"name":"Latin",
-			"nativeName":"latine, lingua latina"
-		}
+		"key":"la",
+		"name":"Latin",
+		"nativeName":"latine, lingua latina"
+
 	},
 	{
-		"lb":{
-			"name":"Luxembourgish, Letzeburgesch",
-			"nativeName":"Lëtzebuergesch"
-		}
+		"key":"lb",
+		"name":"Luxembourgish, Letzeburgesch",
+		"nativeName":"Lëtzebuergesch"
+
 	},
 	{
-		"lg":{
-			"name":"Luganda",
-			"nativeName":"Luganda"
-		}
+		"key":"lg",
+		"name":"Luganda",
+		"nativeName":"Luganda"
+
 	},
 	{
-		"li":{
-			"name":"Limburgish, Limburgan, Limburger",
-			"nativeName":"Limburgs"
-		}
+		"key":"li",
+		"name":"Limburgish, Limburgan, Limburger",
+		"nativeName":"Limburgs"
+
 	},
 	{
-		"ln":{
-			"name":"Lingala",
-			"nativeName":"Lingála"
-		}
+		"key":"ln",
+		"name":"Lingala",
+		"nativeName":"Lingála"
+
 	},
 	{
-		"lo":{
-			"name":"Lao",
-			"nativeName":"ພາສາລາວ"
-		}
+		"key":"lo",
+		"name":"Lao",
+		"nativeName":"ພາສາລາວ"
+
 	},
 	{
-		"lt":{
-			"name":"Lithuanian",
-			"nativeName":"lietuvių kalba"
-		}
+		"key":"lt",
+		"name":"Lithuanian",
+		"nativeName":"lietuvių kalba"
+
 	},
 	{
-		"lu":{
-			"name":"Luba-Katanga",
-			"nativeName":""
-		}
+		"key":"lu",
+		"name":"Luba-Katanga",
+		"nativeName":""
+
 	},
 	{
-		"lv":{
-			"name":"Latvian",
-			"nativeName":"latviešu valoda"
-		}
+		"key":"lv",
+		"name":"Latvian",
+		"nativeName":"latviešu valoda"
+
 	},
 	{
-		"gv":{
-			"name":"Manx",
-			"nativeName":"Gaelg, Gailck"
-		}
+		"key":"gv",
+		"name":"Manx",
+		"nativeName":"Gaelg, Gailck"
+
 	},
 	{
-		"mk":{
-			"name":"Macedonian",
-			"nativeName":"македонски јазик"
-		}
+		"key":"mk",
+		"name":"Macedonian",
+		"nativeName":"македонски јазик"
+
 	},
 	{
-		"mg":{
-			"name":"Malagasy",
-			"nativeName":"Malagasy fiteny"
-		}
+		"key":"mg",
+		"name":"Malagasy",
+		"nativeName":"Malagasy fiteny"
+
 	},
 	{
-		"ms":{
-			"name":"Malay",
-			"nativeName":"bahasa Melayu, بهاس ملايو‎"
-		}
+		"key":"ms",
+		"name":"Malay",
+		"nativeName":"bahasa Melayu, بهاس ملايو‎"
+
 	},
 	{
-		"ml":{
-			"name":"Malayalam",
-			"nativeName":"മലയാളം"
-		}
+		"key":"ml",
+		"name":"Malayalam",
+		"nativeName":"മലയാളം"
+
 	},
 	{
-		"mt":{
-			"name":"Maltese",
-			"nativeName":"Malti"
-		}
+		"key":"mt",
+		"name":"Maltese",
+		"nativeName":"Malti"
+
 	},
 	{
-		"mi":{
-			"name":"Māori",
-			"nativeName":"te reo Māori"
-		}
+		"key":"mi",
+		"name":"Māori",
+		"nativeName":"te reo Māori"
+
 	},
 	{
-		"mr":{
-			"name":"Marathi (Marāṭhī)",
-			"nativeName":"मराठी"
-		}
+		"key":"mr",
+		"name":"Marathi (Marāṭhī)",
+		"nativeName":"मराठी"
+
 	},
 	{
-		"mh":{
-			"name":"Marshallese",
-			"nativeName":"Kajin M̧ajeļ"
-		}
+		"key":"mh",
+		"name":"Marshallese",
+		"nativeName":"Kajin M̧ajeļ"
+
 	},
 	{
-		"mn":{
-			"name":"Mongolian",
-			"nativeName":"монгол"
-		}
+		"key":"mn",
+		"name":"Mongolian",
+		"nativeName":"монгол"
+
 	},
 	{
-		"na":{
-			"name":"Nauru",
-			"nativeName":"Ekakairũ Naoero"
-		}
+		"key":"na",
+		"name":"Nauru",
+		"nativeName":"Ekakairũ Naoero"
+
 	},
 	{
-		"nv":{
-			"name":"Navajo, Navaho",
-			"nativeName":"Diné bizaad, Dinékʼehǰí"
-		}
+		"key":"nv",
+		"name":"Navajo, Navaho",
+		"nativeName":"Diné bizaad, Dinékʼehǰí"
+
 	},
 	{
-		"nb":{
-			"name":"Norwegian Bokmål",
-			"nativeName":"Norsk bokmål"
-		}
+		"key":"nb",
+		"name":"Norwegian Bokmål",
+		"nativeName":"Norsk bokmål"
+
 	},
 	{
-		"nd":{
-			"name":"North Ndebele",
-			"nativeName":"isiNdebele"
-		}
+		"key":"nd",
+		"name":"North Ndebele",
+		"nativeName":"isiNdebele"
+
 	},
 	{
-		"ne":{
-			"name":"Nepali",
-			"nativeName":"नेपाली"
-		}
+		"key":"ne",
+		"name":"Nepali",
+		"nativeName":"नेपाली"
+
 	},
 	{
-		"ng":{
-			"name":"Ndonga",
-			"nativeName":"Owambo"
-		}
+		"key":"ng",
+		"name":"Ndonga",
+		"nativeName":"Owambo"
+
 	},
 	{
-		"nn":{
-			"name":"Norwegian Nynorsk",
-			"nativeName":"Norsk nynorsk"
-		}
+		"key":"nn",
+		"name":"Norwegian Nynorsk",
+		"nativeName":"Norsk nynorsk"
+
 	},
 	{
-		"no":{
-			"name":"Norwegian",
-			"nativeName":"Norsk"
-		}
+		"key":"no",
+		"name":"Norwegian",
+		"nativeName":"Norsk"
+
 	},
 	{
-		"ii":{
-			"name":"Nuosu",
-			"nativeName":"ꆈꌠ꒿ Nuosuhxop"
-		}
+		"key":"ii",
+		"name":"Nuosu",
+		"nativeName":"ꆈꌠ꒿ Nuosuhxop"
+
 	},
 	{
-		"nr":{
-			"name":"South Ndebele",
-			"nativeName":"isiNdebele"
-		}
+		"key":"nr",
+		"name":"South Ndebele",
+		"nativeName":"isiNdebele"
+
 	},
 	{
-		"oc":{
-			"name":"Occitan",
-			"nativeName":"Occitan"
-		}
+		"key":"oc",
+		"name":"Occitan",
+		"nativeName":"Occitan"
+
 	},
 	{
-		"oj":{
-			"name":"Ojibwe, Ojibwa",
-			"nativeName":"ᐊᓂᔑᓈᐯᒧᐎᓐ"
-		}
+		"key":"oj",
+		"name":"Ojibwe, Ojibwa",
+		"nativeName":"ᐊᓂᔑᓈᐯᒧᐎᓐ"
+
 	},
 	{
-		"cu":{
-			"name":"Old Church Slavonic, Church Slavic, Church Slavonic, Old Bulgarian, Old Slavonic",
-			"nativeName":"ѩзыкъ словѣньскъ"
-		}
+		"key":"cu",
+		"name":"Old Church Slavonic, Church Slavic, Church Slavonic, Old Bulgarian, Old Slavonic",
+		"nativeName":"ѩзыкъ словѣньскъ"
+
 	},
 	{
-		"om":{
-			"name":"Oromo",
-			"nativeName":"Afaan Oromoo"
-		}
+		"key":"om",
+		"name":"Oromo",
+		"nativeName":"Afaan Oromoo"
+
 	},
 	{
-		"or":{
-			"name":"Oriya",
-			"nativeName":"ଓଡ଼ିଆ"
-		}
+		"key":"or",
+		"name":"Oriya",
+		"nativeName":"ଓଡ଼ିଆ"
+
 	},
 	{
-		"os":{
-			"name":"Ossetian, Ossetic",
-			"nativeName":"ирон æвзаг"
-		}
+		"key":"os",
+		"name":"Ossetian, Ossetic",
+		"nativeName":"ирон æвзаг"
+
 	},
 	{
-		"pa":{
-			"name":"Panjabi, Punjabi",
-			"nativeName":"ਪੰਜਾਬੀ, پنجابی‎"
-		}
+		"key":"pa",
+		"name":"Panjabi, Punjabi",
+		"nativeName":"ਪੰਜਾਬੀ, پنجابی‎"
+
 	},
 	{
-		"pi":{
-			"name":"Pāli",
-			"nativeName":"पाऴि"
-		}
+		"key":"pi",
+		"name":"Pāli",
+		"nativeName":"पाऴि"
+
 	},
 	{
-		"fa":{
-			"name":"Persian",
-			"nativeName":"فارسی"
-		}
+		"key":"fa",
+		"name":"Persian",
+		"nativeName":"فارسی"
+
 	},
 	{
-		"pl":{
-			"name":"Polish",
-			"nativeName":"polski"
-		}
+		"key":"pl",
+		"name":"Polish",
+		"nativeName":"polski"
+
 	},
 	{
-		"ps":{
-			"name":"Pashto, Pushto",
-			"nativeName":"پښتو"
-		}
+		"key":"ps",
+		"name":"Pashto, Pushto",
+		"nativeName":"پښتو"
+
 	},
 	{
-		"pt":{
-			"name":"Portuguese",
-			"nativeName":"Português"
-		}
+		"key":"pt",
+		"name":"Portuguese",
+		"nativeName":"Português"
+
 	},
 	{
-		"qu":{
-			"name":"Quechua",
-			"nativeName":"Runa Simi, Kichwa"
-		}
+		"key":"qu",
+		"name":"Quechua",
+		"nativeName":"Runa Simi, Kichwa"
+
 	},
 	{
-		"rm":{
-			"name":"Romansh",
-			"nativeName":"rumantsch grischun"
-		}
+		"key":"rm",
+		"name":"Romansh",
+		"nativeName":"rumantsch grischun"
+
 	},
 	{
-		"rn":{
-			"name":"Kirundi",
-			"nativeName":"kiRundi"
-		}
+		"key":"rn",
+		"name":"Kirundi",
+		"nativeName":"kiRundi"
+
 	},
 	{
-		"ro":{
-			"name":"Romanian, Moldavian, Moldovan",
-			"nativeName":"română"
-		}
+		"key":"ro",
+		"name":"Romanian, Moldavian, Moldovan",
+		"nativeName":"română"
+
 	},
 	{
-		"ru":{
-			"name":"Russian",
-			"nativeName":"русский язык"
-		}
+		"key":"ru",
+		"name":"Russian",
+		"nativeName":"русский язык"
+
 	},
 	{
-		"sa":{
-			"name":"Sanskrit (Saṁskṛta)",
-			"nativeName":"संस्कृतम्"
-		}
+		"key":"sa",
+		"name":"Sanskrit (Saṁskṛta)",
+		"nativeName":"संस्कृतम्"
+
 	},
 	{
-		"sc":{
-			"name":"Sardinian",
-			"nativeName":"sardu"
-		}
+		"key":"sc",
+		"name":"Sardinian",
+		"nativeName":"sardu"
+
 	},
 	{
-		"sd":{
-			"name":"Sindhi",
-			"nativeName":"सिन्धी, سنڌي، سندھی‎"
-		}
+		"key":"sd",
+		"name":"Sindhi",
+		"nativeName":"सिन्धी, سنڌي، سندھی‎"
+
 	},
 	{
-		"se":{
-			"name":"Northern Sami",
-			"nativeName":"Davvisámegiella"
-		}
+		"key":"se",
+		"name":"Northern Sami",
+		"nativeName":"Davvisámegiella"
+
 	},
 	{
-		"sm":{
-			"name":"Samoan",
-			"nativeName":"gagana faa Samoa"
-		}
+		"key":"sm",
+		"name":"Samoan",
+		"nativeName":"gagana faa Samoa"
+
 	},
 	{
-		"sg":{
-			"name":"Sango",
-			"nativeName":"yângâ tî sängö"
-		}
+		"key":"sg",
+		"name":"Sango",
+		"nativeName":"yângâ tî sängö"
+
 	},
 	{
-		"sr":{
-			"name":"Serbian",
-			"nativeName":"српски језик"
-		}
+		"key":"sr",
+		"name":"Serbian",
+		"nativeName":"српски језик"
+
 	},
 	{
-		"gd":{
-			"name":"Scottish Gaelic; Gaelic",
-			"nativeName":"Gàidhlig"
-		}
+		"key":"gd",
+		"name":"Scottish Gaelic; Gaelic",
+		"nativeName":"Gàidhlig"
+
 	},
 	{
-		"sn":{
-			"name":"Shona",
-			"nativeName":"chiShona"
-		}
+		"key":"sn",
+		"name":"Shona",
+		"nativeName":"chiShona"
+
 	},
 	{
-		"si":{
-			"name":"Sinhala, Sinhalese",
-			"nativeName":"සිංහල"
-		}
+		"key":"si",
+		"name":"Sinhala, Sinhalese",
+		"nativeName":"සිංහල"
+
 	},
 	{
-		"sk":{
-			"name":"Slovak",
-			"nativeName":"slovenčina"
-		}
+		"key":"sk",
+		"name":"Slovak",
+		"nativeName":"slovenčina"
+
 	},
 	{
-		"sl":{
-			"name":"Slovene",
-			"nativeName":"slovenščina"
-		}
+		"key":"sl",
+		"name":"Slovene",
+		"nativeName":"slovenščina"
+
 	},
 	{
-		"so":{
-			"name":"Somali",
-			"nativeName":"Soomaaliga, af Soomaali"
-		}
+		"key":"so",
+		"name":"Somali",
+		"nativeName":"Soomaaliga, af Soomaali"
+
 	},
 	{
-		"st":{
-			"name":"Southern Sotho",
-			"nativeName":"Sesotho"
-		}
+		"key":"st",
+		"name":"Southern Sotho",
+		"nativeName":"Sesotho"
+
 	},
 	{
-		"es":{
-			"name":"Spanish; Castilian",
-			"nativeName":"español, castellano"
-		}
+		"key":"es",
+		"name":"Spanish; Castilian",
+		"nativeName":"español, castellano"
+
 	},
 	{
-		"su":{
-			"name":"Sundanese",
-			"nativeName":"Basa Sunda"
-		}
+		"key":"su",
+		"name":"Sundanese",
+		"nativeName":"Basa Sunda"
+
 	},
 	{
-		"sw":{
-			"name":"Swahili",
-			"nativeName":"Kiswahili"
-		}
+		"key":"sw",
+		"name":"Swahili",
+		"nativeName":"Kiswahili"
+
 	},
 	{
-		"ss":{
-			"name":"Swati",
-			"nativeName":"SiSwati"
-		}
+		"key":"ss",
+		"name":"Swati",
+		"nativeName":"SiSwati"
+
 	},
 	{
-		"sv":{
-			"name":"Swedish",
-			"nativeName":"svenska"
-		}
+		"key":"sv",
+		"name":"Swedish",
+		"nativeName":"svenska"
+
 	},
 	{
-		"ta":{
-			"name":"Tamil",
-			"nativeName":"தமிழ்"
-		}
+		"key":"ta",
+		"name":"Tamil",
+		"nativeName":"தமிழ்"
+
 	},
 	{
-		"te":{
-			"name":"Telugu",
-			"nativeName":"తెలుగు"
-		}
+		"key":"te",
+		"name":"Telugu",
+		"nativeName":"తెలుగు"
+
 	},
 	{
-		"tg":{
-			"name":"Tajik",
-			"nativeName":"тоҷикӣ, toğikī, تاجیکی‎"
-		}
+		"key":"tg",
+		"name":"Tajik",
+		"nativeName":"тоҷикӣ, toğikī, تاجیکی‎"
+
 	},
 	{
-		"th":{
-			"name":"Thai",
-			"nativeName":"ไทย"
-		}
+		"key":"th",
+		"name":"Thai",
+		"nativeName":"ไทย"
+
 	},
 	{
-		"ti":{
-			"name":"Tigrinya",
-			"nativeName":"ትግርኛ"
-		}
+		"key":"ti",
+		"name":"Tigrinya",
+		"nativeName":"ትግርኛ"
+
 	},
 	{
-		"bo":{
-			"name":"Tibetan Standard, Tibetan, Central",
-			"nativeName":"བོད་ཡིག"
-		}
+		"key":"bo",
+		"name":"Tibetan Standard, Tibetan, Central",
+		"nativeName":"བོད་ཡིག"
+
 	},
 	{
-		"tk":{
-			"name":"Turkmen",
-			"nativeName":"Türkmen, Түркмен"
-		}
+		"key":"tk",
+		"name":"Turkmen",
+		"nativeName":"Türkmen, Түркмен"
+
 	},
 	{
-		"tl":{
-			"name":"Tagalog",
-			"nativeName":"Wikang Tagalog, ᜏᜒᜃᜅ᜔ ᜆᜄᜎᜓᜄ᜔"
-		}
+		"key":"tl",
+		"name":"Tagalog",
+		"nativeName":"Wikang Tagalog, ᜏᜒᜃᜅ᜔ ᜆᜄᜎᜓᜄ᜔"
+
 	},
 	{
-		"tn":{
-			"name":"Tswana",
-			"nativeName":"Setswana"
-		}
+		"key":"tn",
+		"name":"Tswana",
+		"nativeName":"Setswana"
+
 	},
 	{
-		"to":{
-			"name":"Tonga (Tonga Islands)",
-			"nativeName":"faka Tonga"
-		}
+		"key":"to",
+		"name":"Tonga (Tonga Islands)",
+		"nativeName":"faka Tonga"
+
 	},
 	{
-		"tr":{
-			"name":"Turkish",
-			"nativeName":"Türkçe"
-		}
+		"key":"tr",
+		"name":"Turkish",
+		"nativeName":"Türkçe"
+
 	},
 	{
-		"ts":{
-			"name":"Tsonga",
-			"nativeName":"Xitsonga"
-		}
+		"key":"ts",
+		"name":"Tsonga",
+		"nativeName":"Xitsonga"
+
 	},
 	{
-		"tt":{
-			"name":"Tatar",
-			"nativeName":"татарча, tatarça, تاتارچا‎"
-		}
+		"key":"tt",
+		"name":"Tatar",
+		"nativeName":"татарча, tatarça, تاتارچا‎"
+
 	},
 	{
-		"tw":{
-			"name":"Twi",
-			"nativeName":"Twi"
-		}
+		"key":"tw",
+		"name":"Twi",
+		"nativeName":"Twi"
+
 	},
 	{
-		"ty":{
-			"name":"Tahitian",
-			"nativeName":"Reo Tahiti"
-		}
+		"key":"ty",
+		"name":"Tahitian",
+		"nativeName":"Reo Tahiti"
+
 	},
 	{
-		"ug":{
-			"name":"Uighur, Uyghur",
-			"nativeName":"Uyƣurqə, ئۇيغۇرچە‎"
-		}
+		"key":"ug",
+		"name":"Uighur, Uyghur",
+		"nativeName":"Uyƣurqə, ئۇيغۇرچە‎"
+
 	},
 	{
-		"uk":{
-			"name":"Ukrainian",
-			"nativeName":"українська"
-		}
+		"key":"uk",
+		"name":"Ukrainian",
+		"nativeName":"українська"
+
 	},
 	{
-		"ur":{
-			"name":"Urdu",
-			"nativeName":"اردو"
-		}
+		"key":"ur",
+		"name":"Urdu",
+		"nativeName":"اردو"
+
 	},
 	{
-		"uz":{
-			"name":"Uzbek",
-			"nativeName":"zbek, Ўзбек, أۇزبېك‎"
-		}
+		"key":"uz",
+		"name":"Uzbek",
+		"nativeName":"zbek, Ўзбек, أۇزبېك‎"
+
 	},
 	{
-		"ve":{
-			"name":"Venda",
-			"nativeName":"Tshivenḓa"
-		}
+		"key":"ve",
+		"name":"Venda",
+		"nativeName":"Tshivenḓa"
+
 	},
 	{
-		"vi":{
-			"name":"Vietnamese",
-			"nativeName":"Tiếng Việt"
-		}
+		"key":"vi",
+		"name":"Vietnamese",
+		"nativeName":"Tiếng Việt"
+
 	},
 	{
-		"vo":{
-			"name":"Volapük",
-			"nativeName":"Volapük"
-		}
+		"key":"vo",
+		"name":"Volapük",
+		"nativeName":"Volapük"
+
 	},
 	{
-		"wa":{
-			"name":"Walloon",
-			"nativeName":"Walon"
-		}
+		"key":"wa",
+		"name":"Walloon",
+		"nativeName":"Walon"
+
 	},
 	{
-		"cy":{
-			"name":"Welsh",
-			"nativeName":"Cymraeg"
-		}
+		"key":"cy",
+		"name":"Welsh",
+		"nativeName":"Cymraeg"
+
 	},
 	{
-		"wo":{
-			"name":"Wolof",
-			"nativeName":"Wollof"
-		}
+		"key":"wo",
+		"name":"Wolof",
+		"nativeName":"Wollof"
+
 	},
 	{
-		"fy":{
-			"name":"Western Frisian",
-			"nativeName":"Frysk"
-		}
+		"key":"fy",
+		"name":"Western Frisian",
+		"nativeName":"Frysk"
+
 	},
 	{
-		"xh":{
-			"name":"Xhosa",
-			"nativeName":"isiXhosa"
-		}
+		"key":"xh",
+		"name":"Xhosa",
+		"nativeName":"isiXhosa"
+
 	},
 	{
-		"yi":{
-			"name":"Yiddish",
-			"nativeName":"ייִדיש"
-		}
+		"key":"yi",
+		"name":"Yiddish",
+		"nativeName":"ייִדיש"
+
 	},
 	{
-		"yo":{
-			"name":"Yoruba",
-			"nativeName":"Yorùbá"
-		}
+		"key":"yo",
+		"name":"Yoruba",
+		"nativeName":"Yorùbá"
+
 	},
 	{
-		"za":{
-			"name":"Zhuang, Chuang",
-			"nativeName":"Saɯ cueŋƅ, Saw cuengh"
-		}	
+		"key":"za",
+		"name":"Zhuang, Chuang",
+		"nativeName":"Saɯ cueŋƅ, Saw cuengh"
+
 	}
 ]
 

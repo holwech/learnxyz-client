@@ -1,4 +1,4 @@
-function search(state = {searchWordInput: '', languageInputChange: ''}, action) {
+function search(state = {searchWordInput: '', mainSidebarInput: ''}, action) {
 	switch (action.type) {
 		case 'SEARCH_WORD_INPUT_CHANGE':
 			console.log(action.searchWordInput);
@@ -10,10 +10,9 @@ function search(state = {searchWordInput: '', languageInputChange: ''}, action) 
 			return Object.assign({}, state, { wordFocus: true });
 		case 'SEARCH_WORD_BLUR':
 			return Object.assign({}, state, { wordFocus: false });
-		case 'SEARCH_LANGUAGE_CHANGE':
-			console.log(action.languageInput);
+		case 'MAIN_SIDEBAR_INPUT_CHANGE':
 			return Object.assign({}, state, {
-				languageInput: action.languageInput
+				mainSidebarInput: action.input
 			});
 		default:
 			return state;

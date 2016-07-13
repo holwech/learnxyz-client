@@ -1,11 +1,16 @@
 function settings(state = {}, action) {
 	switch (action.type) {
-		case 'LANGUAGE_SELECT':
-			console.log(action.language);
-			let newState = Object.assign({}, state, {
-				language: action.language
+		case 'MAIN_SIDEBAR_LANGUAGE_FIELD_SELECT':
+			return Object.assign({}, state, {
+				language: action.field
 			});
-			return newState;
+		case 'MAIN_SIDEBAR_CATEGORY_FIELD_SELECT':
+				console.log(action.field);
+				return Object.assign({}, state, {
+					filter: {
+						category: action.field.category
+					}
+				});
 		case 'SIDEBAR_TAB_SELECT':
 			return Object.assign({}, state, {
 				sidebarTab: action.sidebarTab
