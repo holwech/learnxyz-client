@@ -9,7 +9,9 @@ function search(state = {searchWordInput: '', mainSidebarInput: ''}, action) {
 		case 'SEARCH_WORD_FOCUS':
 			return Object.assign({}, state, { wordFocus: true });
 		case 'SEARCH_WORD_BLUR':
-			return Object.assign({}, state, { wordFocus: false });
+			if (state.searchWordInput.length === 0) {
+				return Object.assign({}, state, { wordFocus: false });
+			}
 		case 'MAIN_SIDEBAR_INPUT_CHANGE':
 			return Object.assign({}, state, {
 				mainSidebarInput: action.input

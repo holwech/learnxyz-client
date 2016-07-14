@@ -11,6 +11,7 @@ import App from './containers/App';
 import Single from './components/Single';
 import PhotoGrid from './components/PhotoGrid';
 import WordResult from './containers/WordResult';
+import UrlResult from './containers/UrlResult';
 
 
 const app = document.getElementById('app');
@@ -20,6 +21,7 @@ ReactDOM.render(
 		 <Router history={history}>
 			 <Route path='/' component={App}>
 				 <IndexRoute component={WordResult}></IndexRoute>
+				 <Route path='/:wordId' component={UrlResult} />
 			 </Route>
 		 </Router>
 	 </Provider>

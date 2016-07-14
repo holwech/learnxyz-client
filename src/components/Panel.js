@@ -24,9 +24,7 @@ export default class Panel extends React.Component {
 				class={`panel ${this.props.style} ${hidden} ${active}`}
 				onClick={this.handleClick}	
 			>
-				<p>
-					<Highlight search={this.props.highlight}>{this.props.heading}</Highlight>
-				</p>
+				<Highlight search={this.props.highlight}>{this.props.heading}</Highlight>
 			</div>						
 		);	
 	}	

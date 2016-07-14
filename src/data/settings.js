@@ -6,19 +6,19 @@ let settings = {
 
 	},
 	filter: {
-			category: 'Math' 
+			discipline: 'Math' 
 	},
 	sidebarTab: 'Language',
 	filters: [
 		{
-			category: 'Math',
+			discipline: 'Math',
 			subject: [
 				'Algebra',
 				'Linear systems'
 			]
 		},
 		{
-			category: 'Physics',
+			discipline: 'Physics',
 			subject: [
 				'Mechanics',
 				'Linear Mechanics'

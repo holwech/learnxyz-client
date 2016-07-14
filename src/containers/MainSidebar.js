@@ -14,11 +14,11 @@ export default class MainSidebar extends React.Component {
 			keySelector = 'key'
 		} else {
 			selectedField = this.props.settings.filter;
-			selectedFieldHeading = this.props.settings.filter.category;	
+			selectedFieldHeading = this.props.settings.filter.discipline;	
 			fieldSelect = this.props.mainSidebarCategoryFieldSelect;
 			fields = this.props.settings.filters;
-			headingSelector = 'category';
-			keySelector = 'category';
+			headingSelector = 'discipline';
+			keySelector = 'discipline';
 		}
 		return (
 			<Sidebar

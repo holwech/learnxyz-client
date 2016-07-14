@@ -8,7 +8,7 @@ function settings(state = {}, action) {
 				console.log(action.field);
 				return Object.assign({}, state, {
 					filter: {
-						category: action.field.category
+						discipline: action.field.discipline
 					}
 				});
 		case 'SIDEBAR_TAB_SELECT':
