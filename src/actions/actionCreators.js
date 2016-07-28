@@ -20,9 +20,16 @@ export function mainSidebarLanguageFieldSelect(field) {
 	}
 }
 
-export function mainSidebarCategoryFieldSelect(field) {
+export function mainSidebarFilterFieldSelect(field) {
 	return {
-		type: 'MAIN_SIDEBAR_CATEGORY_FIELD_SELECT',
+		type: 'MAIN_SIDEBAR_FILTER_FIELD_SELECT',
+		field
+	}
+}
+
+export function mainSidebarFilterSelectedFieldClick(field) {
+	return {
+		type: 'MAIN_SIDEBAR_SELECTED_FIELD_CLICK',
 		field
 	}
 }

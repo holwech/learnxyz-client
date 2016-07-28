@@ -8,6 +8,7 @@
 // slim: Styling for panel.
 // active: Active styling for panel.
 
+
 import React from 'react';
 import { Link  } from 'react-router';
 import Highlight from 'react-highlighter';
@@ -29,3 +30,12 @@ export default class Panel extends React.Component {
 		);	
 	}	
 } 
+
+Panel.propTypes = {
+	heading: React.PropTypes.string.isRequired,
+	highlight: React.PropTypes.string,
+	onClick: React.PropTypes.func,
+	data: React.PropTypes.object.isRequired,
+	slim: React.PropTypes.string,
+	active: React.PropTypes.bool
+}

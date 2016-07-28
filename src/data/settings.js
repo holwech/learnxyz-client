@@ -6,22 +6,41 @@ let settings = {
 
 	},
 	filter: {
-			discipline: 'Math' 
+			discipline: 'All' 
 	},
 	sidebarTab: 'Language',
 	filters: [
 		{
 			discipline: 'Math',
-			subject: [
-				'Algebra',
-				'Linear systems'
+			subjects: [
+				{
+					subject: 'Algebra'
+				},
+				{
+					subject: 'Nonlinear systems'
+				},
 			]
 		},
 		{
 			discipline: 'Physics',
 			subject: [
-				'Mechanics',
-				'Linear Mechanics'
+				{
+					subject: 'Mechanics'
+				},
+				{
+					subject: 'Linear Mechanics'
+				},
+			]
+		},
+		{
+			discipline: 'Chemistry',
+			subject: [
+				{
+					subject: 'Biochem'
+				},
+				{
+					subject: 'Non-organic'
+				},
 			]
 		}
 	]

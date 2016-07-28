@@ -2,31 +2,52 @@ import React from 'react';
 import Sidebar from '../components/Sidebar';
 
 export default class MainSidebar extends React.Component {
+				headingSelector = 'discipline';
+				keySelector = 'discipline';
+				headingSelector = 'discipline';
+				keySelector = 'discipline';
 	render() {
-		let selectedField, inputChange, fields, selectedFieldHeading;
-		let headingSelector, keySelector, fieldSelect;
+		let selectedFields, inputChange, fields, selectedFieldHeadings;
+		let headingSelector, keySelector, fieldSelect, selectedFieldClick;
 		if (this.props.settings.sidebarTab === 'Language') {
-			selectedField = this.props.settings.language;
-			selectedFieldHeading = this.props.settings.language.name;
+			selectedFields = [this.props.settings.language];
+			selectedFieldHeadings = [this.props.settings.language.name];
 			fieldSelect = this.props.mainSidebarLanguageFieldSelect;
 			fields = this.props.languages;	
 			headingSelector = 'name';
 			keySelector = 'key'
 		} else {
-			selectedField = this.props.settings.filter;
-			selectedFieldHeading = this.props.settings.filter.discipline;	
-			fieldSelect = this.props.mainSidebarCategoryFieldSelect;
+			selectedFields = [this.props.settings.filter];
+			selectedFieldHeadings = [this.props.settings.filter.discipline];
+			selectedFieldClick = this.props.mainSidebarSelectedFieldClick;
+			fieldSelect = this.props.mainSidebarFilterFieldSelect;
 			fields = this.props.settings.filters;
-			headingSelector = 'discipline';
-			keySelector = 'discipline';
+			if (this.props.settings.filter.discipline === 'All'){
+				headingSelector = 'discipline';
+				keySelector = 'discipline';
+			} else {
+				for (let i = 0; i < fields.length; i++) {
+					if (fields[i].discipline === selectedFieldHeadings[0]) {
+						fields = fields[i].subjects;
+						break;
+					}
+				}
+				if (this.props.settings.filter.subject) {
+					console.log(this.props.settings.filter.subject);
+					selectedFieldHeadings[1]  = this.props.settings.filter.subject;
+				}
+				headingSelector = 'subject';
+				keySelector = 'subject';
+			}
 		}
 		return (
 			<Sidebar
 				tabSelect={this.props.sidebarTabSelect}
 				currentTab={this.props.settings.sidebarTab}
 				tabNames={['Language', 'Category']}
-				selectedFieldHeading={selectedFieldHeading}
-				selectedField={selectedField}
+				selectedFields={selectedFields}
+				selectedFieldHeadings={selectedFieldHeadings}
+				selectedFieldClick={selectedFieldClick}
 				inputChange={this.props.mainSidebarInputChange}		
 				fieldSelect={fieldSelect}
 				showAmount={20}

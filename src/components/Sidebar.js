@@ -2,8 +2,8 @@
 // tabSelect*: Action function for clicking tab. Should be 1,2,3,4,6,8 or 12
 // 	values or shit gets fucked up and things will look ugly.
 // currentTab*: Current selected tab.
-// selectedField*: Current selected field.
-// selectedFieldHeading*: Heading of selected field.
+// selectedFields*: Current selected field.
+// selectedFieldClick*: Handling of onClick of a selected field
 // tabNames*: Array of tab names. Each value must start with captial letter.
 // inputChange*: Action function for when search input changes. 
 //
@@ -23,7 +23,7 @@ export default class Sidebar extends React.Component {
 	}
 	render() {
 		let currentTab = this.props.currentTab;
-		let selectedField = this.props.selectedField;
+		let selectedFields = this.props.selectedFields;
 		let columnWidth = 24 / this.props.tabNames.length;
 		return (
 			<div class='col-4 sidebar-left'>
@@ -42,17 +42,20 @@ export default class Sidebar extends React.Component {
 				</nav>
 				<div class='body'>
 				<input type='text' class='input-small' onChange={this.inputChange}/>
-				<Panel 
-					heading={this.props.selectedFieldHeading}
-					style={this.props.panelStyle}
-					data={selectedField}
-					active={true}
-				/>
+				{this.props.selectedFields.map((value, index) => {
+					return <Panel
+						heading={this.props.selectedFieldHeadings[index]}
+						key={value[this.props.keySelector]}
+						style={this.props.panelStyle}
+						data={value}
+						active={true}
+					/>
+				})}
 				<br />
 				<PanelList
 					fieldSelect={this.props.fieldSelect}
 					showAmount={this.props.showAmount}
-					selectedField={selectedField}
+					selectedFields={this.props.selectedFields}
 					search={this.props.search}
 					fields={this.props.fields}
 					headingSelector={this.props.headingSelector}
@@ -65,3 +68,21 @@ export default class Sidebar extends React.Component {
 		);	
 	}	
 } 
+
+Sidebar.propTypes = {
+		tabSelect: React.PropTypes.func.isRequired,
+		currentTab: React.PropTypes.string.isRequired,
+		selectedFields: React.PropTypes.array.isRequired,
+		selectedFieldHeadings : React.PropTypes.array.isRequired,
+		selectedFieldClick: React.PropTypes.func,
+		tabNames: React.PropTypes.array.isRequired,
+		inputChange: React.PropTypes.func.isRequired,
+		
+		//PanelList values
+		fieldSelect: React.PropTypes.func.isRequired,
+		showAmount: React.PropTypes.number.isRequired,
+		search: React.PropTypes.string,
+		fields: React.PropTypes.array.isRequired,
+		headingSelector: React.PropTypes.string.isRequired,
+		keySelector: React.PropTypes.string.isRequired
+};

@@ -24,9 +24,15 @@ export default class PanelList extends React.Component {
 				{this.props.fields.map((val, index) => {
 					let hidden = val.hidden;
 					if (hidden !== true) { renderedAmount++; }
-					if (showAmount < renderedAmount ||
-							val[this.props.keySelector] === this.props.selectedField[this.props.keySelector]) {
+					if (showAmount < renderedAmount) {
 						hidden = true; 
+					} else {
+						for (let i = 0; i < this.props.selectedFields.length; i++) {
+							if (val[this.props.keySelector] === 
+									this.props.selectedFields[i][this.props.keySelector]) {
+								hidden = true;
+							}	
+						}
 					}
 					return <Panel 
 						key={val[this.props.keySelector]}	
@@ -42,3 +48,13 @@ export default class PanelList extends React.Component {
 		);
 	};
 }
+
+PanelList.propTypes = {
+		fieldSelect: React.PropTypes.func.isRequired,
+		showAmount: React.PropTypes.number.isRequired,
+		search: React.PropTypes.string,
+		fields: React.PropTypes.array.isRequired,
+		headingSelector: React.PropTypes.string.isRequired,
+		keySelector: React.PropTypes.string.isRequired,
+		selectedFields: React.PropTypes.array.isRequired
+};
