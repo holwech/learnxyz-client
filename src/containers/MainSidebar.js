@@ -1,12 +1,16 @@
 import React from 'react';
 import Sidebar from '../components/Sidebar';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as actionCreators from '../actions/actionCreators';
 
-export default class MainSidebar extends React.Component {
-				headingSelector = 'discipline';
-				keySelector = 'discipline';
-				headingSelector = 'discipline';
-				keySelector = 'discipline';
+class MainSidebar extends React.Component {
+	headingSelector = 'discipline';
+	keySelector = 'discipline';
+	headingSelector = 'discipline';
+	keySelector = 'discipline';
 	render() {
+		// Good luck understanding this part...
 		let selectedFields, inputChange, fields, selectedFieldHeadings;
 		let headingSelector, keySelector, fieldSelect, selectedFieldClick;
 		if (this.props.settings.sidebarTab === 'Language') {
@@ -60,3 +64,24 @@ export default class MainSidebar extends React.Component {
 		);
 	}
 } 
+
+
+// Map reducer state to props
+function mapStateToProps(state) {
+	return {
+		posts: state.posts,
+		comments: state.comments,
+		words: state.words,
+		languages: state.languages,
+		search: state.search,
+		settings: state.settings
+	}
+}
+
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators(actionCreators, dispatch);	
+}
+
+MainSidebar = connect(mapStateToProps, mapDispatchToProps)(MainSidebar);
+
+export default MainSidebar;

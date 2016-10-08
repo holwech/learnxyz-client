@@ -1,9 +1,11 @@
 import React from 'react';
-
 import Panel from '../components/LPanel';
 import { Link  } from 'react-router';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as actionCreators from '../actions/actionCreators';
 
-export default class WordResult extends React.Component {
+class WordResult extends React.Component {
 	render() {
 		return (
 			<div class='col-12 results'>
@@ -20,3 +22,24 @@ export default class WordResult extends React.Component {
 		);
 	};
 }
+
+
+// Map reducer state to props
+function mapStateToProps(state) {
+	return {
+		posts: state.posts,
+		comments: state.comments,
+		words: state.words,
+		languages: state.languages,
+		search: state.search,
+		settings: state.settings
+	}
+}
+
+function mapDispatchToProps(dispatch) {
+	return bindActionCreators(actionCreators, dispatch);	
+}
+
+WordResult = connect(mapStateToProps, mapDispatchToProps)(WordResult);
+
+export default WordResult;

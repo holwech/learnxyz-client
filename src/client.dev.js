@@ -8,7 +8,7 @@ import DevTools from './dev/DevTools';
 
 import './stylesheets/main.scss';
 
-import App from './containers/App';
+import Main from './containers/Main';
 import Single from './components/Single';
 import PhotoGrid from './components/PhotoGrid';
 import WordResult from './containers/WordResult';
@@ -22,7 +22,7 @@ ReactDOM.render(
 	 	<div>
 		 <DevTools />
 		 <Router history={history}>
-			 <Route path='/' component={App}>
+			 <Route path='/' component={Main}>
 				 <IndexRoute component={WordResult}></IndexRoute>
 				 <Route path='/:wordId' component={UrlResult} />
 			 </Route>
