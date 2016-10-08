@@ -23,7 +23,7 @@ class MainSidebar extends React.Component {
 		} else {
 			selectedFields = [this.props.settings.filter];
 			selectedFieldHeadings = [this.props.settings.filter.discipline];
-			selectedFieldClick = this.props.mainSidebarSelectedFieldClick;
+			selectedFieldClick = this.props.mainSidebarFilterSelectedFieldClick;
 			fieldSelect = this.props.mainSidebarFilterFieldSelect;
 			fields = this.props.settings.filters;
 			if (this.props.settings.filter.discipline === 'All'){
@@ -69,9 +69,6 @@ class MainSidebar extends React.Component {
 // Map reducer state to props
 function mapStateToProps(state) {
 	return {
-		posts: state.posts,
-		comments: state.comments,
-		words: state.words,
 		languages: state.languages,
 		search: state.search,
 		settings: state.settings

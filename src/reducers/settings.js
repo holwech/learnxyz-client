@@ -17,7 +17,7 @@ function settings(state = {}, action) {
 				sidebarTab: action.sidebarTab
 			})
 		case 'MAIN_SIDEBAR_SELECTED_FIELD_CLICK':
-				console.log(action.field);
+			console.log(action.field);
 	}
 	return state;
 }

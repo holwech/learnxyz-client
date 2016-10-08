@@ -49,6 +49,7 @@ export default class Sidebar extends React.Component {
 						style={this.props.panelStyle}
 						data={value}
 						active={true}
+						onClick={this.props.selectedFieldClick}
 					/>
 				})}
 				<br />
