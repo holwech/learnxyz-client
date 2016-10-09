@@ -2,7 +2,7 @@ import React from 'react';
 import { Link  } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as actionCreators from '../actions/actionCreators';
+import * as actionCreators from '../actions/TopNav';
 
 class TopNav extends React.Component {
 	searchInputChange = (event) => {

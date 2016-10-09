@@ -1,7 +1,8 @@
 function words(state = [], action) {
+	let newState;
 	switch (action.type) {
 		case 'SEARCH_WORD_INPUT_CHANGE':
-			let newState = Object.assign([], state, []);
+			newState = Object.assign([], state, []);
 			let regex = new RegExp(action.searchWordInput, 'i');
 			newState.forEach((value, index, array) => {
 				if (value.word.match(regex) === null) {

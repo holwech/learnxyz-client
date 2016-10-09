@@ -3,13 +3,21 @@ import Panel from '../components/LPanel';
 import { Link  } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as actionCreators from '../actions/actionCreators';
+import * as actionCreators from '../actions/TopNav';
 
 class WordResult extends React.Component {
+	applyFilter = (value) => {
+		return !value.hidden;
+	}
 	render() {
+		let words = this.props.words.filter(this.applyFilter);
 		return (
 			<div class='col-12 results'>
-			{this.props.words.map((val) =>
+			{words.map((val) => {
+				let filterTags = [val.discipline];
+				if (val.subject) {
+					filterTags[1] = val.subject;
+				}
 				<Link to={`/${val.id}/`} key={val.id}>
 					<Panel 
 						heading={val.word}
@@ -17,7 +25,7 @@ class WordResult extends React.Component {
 						highlight={this.props.search.searchWordInput} 
 					/> 
 				</Link>
-			)}	
+				})}	
 			</div>
 		);
 	};

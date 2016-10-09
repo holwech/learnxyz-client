@@ -19,6 +19,7 @@ export default class Panel extends React.Component {
 					<Highlight search={this.props.highlight}>
 						{this.props.heading}
 					</Highlight>
+					{filterTags}
 				</div>
 			</div>
 		);	

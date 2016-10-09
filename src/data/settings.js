@@ -11,7 +11,7 @@ let settings = {
 	sidebarTab: 'Language',
 	filters: [
 		{
-			discipline: 'Math',
+			discipline: 'Mathematics',
 			subjects: [
 				{
 					subject: 'Algebra'
