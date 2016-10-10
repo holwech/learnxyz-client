@@ -5,61 +5,76 @@ import { connect } from 'react-redux';
 import * as actionCreators from '../actions/mainSidebar';
 
 class MainSidebar extends React.Component {
-	headingSelector = 'discipline';
-	keySelector = 'discipline';
-	headingSelector = 'discipline';
-	keySelector = 'discipline';
 	render() {
-		// Good luck understanding this part...
-		let selectedFields, inputChange, fields, selectedFieldHeadings;
-		let headingSelector, keySelector, fieldSelect, selectedFieldClick;
+		let selectedFields, selectedFieldClick, tabNames, inputChange;
+		let panelFieldSelect, search, panelFields, panelStyle, style;
+		let settings = this.props.settings;
+		tabNames = ['Language', 'Category'];
 		if (this.props.settings.sidebarTab === 'Language') {
-			selectedFields = [this.props.settings.language];
-			selectedFieldHeadings = [this.props.settings.language.name];
-			fieldSelect = this.props.mainSidebarLanguageFieldSelect;
-			fields = this.props.languages;	
-			headingSelector = 'name';
-			keySelector = 'key'
-		} else {
-			selectedFields = [this.props.settings.filter];
-			selectedFieldHeadings = [this.props.settings.filter.discipline];
+			let languages = this.props.languages;
+			panelFieldSelect = this.props.mainSidebarLanguageFieldSelect;
+			selectedFields = [{
+				heading: settings.language.name,
+				key: settings.language.key,
+				data: settings.language.name,
+			}];
+			for (let i = 0; i < languages.length; i++) {
+				if (!languages[i].hidden) {
+					panelFields.push({
+						heading: languages[i].name,
+						key: languages[i].key,
+						data: languages[i]
+					});
+				}
+			}
+		}	else {
+			let words = this.props.words;
+			panelFieldSelect = this.props.mainSidebarFilterFieldSelect;
 			selectedFieldClick = this.props.mainSidebarFilterSelectedFieldClick;
-			fieldSelect = this.props.mainSidebarFilterFieldSelect;
-			fields = this.props.settings.filters;
-			if (this.props.settings.filter.discipline === 'All'){
-				headingSelector = 'discipline';
-				keySelector = 'discipline';
-			} else {
-				for (let i = 0; i < fields.length; i++) {
-					if (fields[i].discipline === selectedFieldHeadings[0]) {
-						fields = fields[i].subjects;
-						break;
+			selectedFields = [{
+				heading: settings.filter.discipline,
+				key: settings.filter.discipline,
+				data: {
+					currentFilter: settings.filter,
+					type: 'discipline',
+				}
+			}]
+			if (!settings.filter.subject) {
+				selectedFields.push({
+					heading: settings.filter.subject,
+					key: settings.filter.subject,
+					data: {
+						currentFilter: settings.filter,
+						type: 'subject',
 					}
+				});
+			}
+			for (let i = 0; i < words.length; i++) {
+				if (!words[i].hidden) {
+					panelFields.push({
+						heading: words[i].word,
+						key: words[i].id,
+						data: {
+							words[i],
+							currentFilter: settings.filter,	
+						}
+					});
 				}
-				if (this.props.settings.filter.subject) {
-					console.log(this.props.settings.filter.subject);
-					selectedFieldHeadings[1]  = this.props.settings.filter.subject;
-				}
-				headingSelector = 'subject';
-				keySelector = 'subject';
 			}
 		}
+
 		return (
 			<Sidebar
 				tabSelect={this.props.sidebarTabSelect}
 				currentTab={this.props.settings.sidebarTab}
-				tabNames={['Language', 'Category']}
 				selectedFields={selectedFields}
-				selectedFieldHeadings={selectedFieldHeadings}
 				selectedFieldClick={selectedFieldClick}
-				inputChange={this.props.mainSidebarInputChange}		
-				fieldSelect={fieldSelect}
-				showAmount={20}
+				tabNames={tabNames}
+				inputChange={this.props.mainSidebarInputChange}
+				panelFieldSelect={panelFieldSelect}
+				panelFields={panelFields}
 				search={this.props.search.mainSidebarInput}
-				fields={fields}
-				headingSelector={headingSelector}
-				keySelector={keySelector}
-				panelStyle={'slim'}
+				panelStye={'slim'}
 			/>
 		);
 	}

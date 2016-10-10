@@ -3,14 +3,14 @@ function settings(state = {}, action) {
 	switch (action.type) {
 		case 'MAIN_SIDEBAR_LANGUAGE_FIELD_SELECT':
 			return Object.assign({}, state, {
-				language: action.field
+				language: action.language
 			});
 		case 'MAIN_SIDEBAR_FILTER_FIELD_SELECT':
 			newState = Object.assign({}, state, {});
 			if (state.filter.discipline === 'All') {
-				newState.filter.discipline = action.field.discipline;
+				newState.filter.discipline = action.filter.discipline;
 			} else {
-				newState.filter.subject = action.field.subject;
+				newState.filter.subject = action.filter.subject;
 			}
 			return newState;
 		case 'SIDEBAR_TAB_SELECT':

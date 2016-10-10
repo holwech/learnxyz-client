@@ -27,5 +27,6 @@ PanelList.propTypes = {
 	panelFields: React.PropTypes.array.isRequired,
 	search: React.PropTypes.string.isRequired,
 	fieldSelect: React.PropTypes.func,
-	panelStyle: React.PropTypes.
+	panelStyle: React.PropTypes.string,
+	style: React.PropTypes.string
 }

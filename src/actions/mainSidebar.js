@@ -12,23 +12,23 @@ export function mainSidebarInputChange(input) {
 	}
 }
 
-export function mainSidebarLanguageFieldSelect(field) {
+export function mainSidebarLanguageFieldSelect(language) {
 	return {
 		type: 'MAIN_SIDEBAR_LANGUAGE_FIELD_SELECT',
-		field
+		language
 	}
 }
 
-export function mainSidebarFilterFieldSelect(field) {
+export function mainSidebarFilterFieldSelect(filter) {
 	return {
 		type: 'MAIN_SIDEBAR_FILTER_FIELD_SELECT',
-		field
+		filter
 	}
 }
 
-export function mainSidebarFilterSelectedFieldClick(field) {
+export function mainSidebarFilterSelectedFieldClick(selectedFilter) {
 	return {
 		type: 'MAIN_SIDEBAR_SELECTED_FIELD_CLICK',
-		field
+		selectedFilter
 	}
 }

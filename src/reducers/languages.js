@@ -2,7 +2,7 @@ function languages(state = [], action) {
 	switch (action.type) {
 		case 'MAIN_SIDEBAR_INPUT_CHANGE':
 			let newState = Object.assign([], state, []);
-			let regex = new RegExp(action.input, 'i');
+			let regex = new RegExp(action.language, 'i');
 			newState.forEach((value, index, array) => {
 				if (value.name.match(regex) === null) {
 					array[index]['hidden'] = true;
