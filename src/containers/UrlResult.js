@@ -6,6 +6,7 @@ export default class UrlResult extends React.Component {
 		return (
 			<div class='col-12 results'>
 				{this.props.params.wordId}
+
 			</div>
 		);
 	};

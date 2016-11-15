@@ -15,11 +15,15 @@ export default class Panel extends React.Component {
 		let active = this.props.active ? 'active' : '';
 		return (
 			<div class={`panel ${style} ${hidden}`}>
+			<div class="row">
 				<div class="heading">
 					<Highlight search={this.props.highlight}>
 						{this.props.heading}
 					</Highlight>
-					{filterTags}
+				</div>
+			</div>
+				<div class="row">
+					{this.props.filterTags}
 				</div>
 			</div>
 		);	
