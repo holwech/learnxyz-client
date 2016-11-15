@@ -14,10 +14,12 @@ class WordResult extends React.Component {
 		return (
 			<div class='col-12 results'>
 			{words.map((val) => {
+				console.log(val.word);
 				let filterTags = [val.discipline];
 				if (val.subject) {
 					filterTags[1] = val.subject;
 				}
+				return (
 				<Link to={`/${val.id}/`} key={val.id}>
 					<Panel 
 						heading={val.word}
@@ -25,6 +27,7 @@ class WordResult extends React.Component {
 						highlight={this.props.search.searchWordInput} 
 					/> 
 				</Link>
+				);
 				})}	
 			</div>
 		);

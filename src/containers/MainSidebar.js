@@ -12,6 +12,7 @@ class MainSidebar extends React.Component {
 		tabNames = ['Language', 'Category'];
 		if (this.props.settings.sidebarTab === 'Language') {
 			let languages = this.props.languages;
+			panelFields = languages;
 			panelFieldSelect = this.props.mainSidebarLanguageFieldSelect;
 			selectedFields = [{
 				heading: settings.language.name,
@@ -29,6 +30,7 @@ class MainSidebar extends React.Component {
 			}
 		}	else {
 			let words = this.props.words;
+			panelFields = words;
 			panelFieldSelect = this.props.mainSidebarFilterFieldSelect;
 			selectedFieldClick = this.props.mainSidebarFilterSelectedFieldClick;
 			selectedFields = [{
@@ -38,7 +40,7 @@ class MainSidebar extends React.Component {
 					currentFilter: settings.filter,
 					type: 'discipline',
 				}
-			}]
+			}];
 			if (!settings.filter.subject) {
 				selectedFields.push({
 					heading: settings.filter.subject,
@@ -55,7 +57,7 @@ class MainSidebar extends React.Component {
 						heading: words[i].word,
 						key: words[i].id,
 						data: {
-							words[i],
+							word: words[i],
 							currentFilter: settings.filter,	
 						}
 					});
@@ -63,20 +65,20 @@ class MainSidebar extends React.Component {
 			}
 		}
 
-		return (
-			<Sidebar
-				tabSelect={this.props.sidebarTabSelect}
-				currentTab={this.props.settings.sidebarTab}
-				selectedFields={selectedFields}
-				selectedFieldClick={selectedFieldClick}
-				tabNames={tabNames}
-				inputChange={this.props.mainSidebarInputChange}
-				panelFieldSelect={panelFieldSelect}
-				panelFields={panelFields}
-				search={this.props.search.mainSidebarInput}
-				panelStye={'slim'}
-			/>
-		);
+//		return (
+//			<Sidebar
+//				tabSelect={this.props.sidebarTabSelect}
+//				currentTab={this.props.settings.sidebarTab}
+//				selectedFields={selectedFields}
+//				selectedFieldClick={selectedFieldClick}
+//				tabNames={tabNames}
+//				inputChange={this.props.mainSidebarInputChange}
+//				panelFieldSelect={panelFieldSelect}
+//				panelFields={panelFields}
+//				search={this.props.search.mainSidebarInput}
+//				panelStye={'slim'}
+//			/>
+//		);
 	}
 } 
 
