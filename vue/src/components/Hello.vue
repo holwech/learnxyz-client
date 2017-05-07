@@ -1,16 +1,38 @@
 <template>
-	<div class="main">
-		{{msg}}
-	</div>
+  <div class="main">
+  <input v-model="search" placeholder="edit me">
+    <div>
+      {{ search }}
+    </div>
+    <searchable-list :search="search"></searchable-list>
+  </div>
 </template>
 
 <script>
+import searchableList from './Searchable-list.vue'
+
 export default {
   name: 'hello',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      search: '',
+      words: [
+        {name: 'banana'},
+        {name: 'orange'},
+        {name: 'potato'},
+        {name: 'kiwi'}
+      ]
     }
+  },
+  computed: {
+    searchResult: function () {
+      return this.words.filter((word) => {
+        return word.name.toLowerCase().indexOf(this.search.toLowerCase()) >= 0
+      })
+    }
+  },
+  components: {
+    searchableList
   }
 }
 </script>
@@ -21,14 +43,12 @@ h1, h2 {
   font-weight: normal;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
 li {
-  display: inline-block;
-  margin: 0 10px;
+  border: 1px solid black;
+  padding: 3px;
+  margin: 5px auto;
+  width: 100px;
+  list-style-type: none;
 }
 
 a {
