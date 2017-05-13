@@ -7,7 +7,9 @@ import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.css'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import VeeValidate from 'vee-validate'
 
+Vue.use(VeeValidate)
 Vue.use(VueAxios, axios)
 Vue.use(VueMaterial)
 

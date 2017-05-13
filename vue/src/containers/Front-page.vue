@@ -14,23 +14,23 @@
 <template>
   <md-layout md-gutter="16">
     <md-layout class="result-card" md-flex="33" md-flex-medium="50" md-flex-xsmall="100" v-for="item in filteredList" :key="item">
-        <md-card class="result-card">
-          <md-card-header>
-            <router-link :to="{ name: 'urlPage', params: { url: item.url }}">
-              <div class="md-title">{{ item.title }}</div>
-            </router-link>
-            <div class="md-subhead">{{ item.url }}</div>
-          </md-card-header>
+      <md-card class="result-card">
+        <md-card-header>
+          <router-link :to="{ name: 'urlPage', params: { url: item.url }}">
+            <div class="md-title">{{ item.title }}</div>
+          </router-link>
+          <div class="md-subhead">{{ item.url }}</div>
+        </md-card-header>
 
-          <md-card-actions>
-            <md-button>Action</md-button>
-            <md-button>Action</md-button>
-          </md-card-actions>
+        <md-card-actions>
+          <md-button>Action</md-button>
+          <md-button>Action</md-button>
+        </md-card-actions>
 
-          <md-card-content>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio itaque ea, nostrum odio. Dolores, sed accusantium quasi non, voluptas eius illo quas, saepe voluptate pariatur in deleniti minus sint. Excepturi.
-          </md-card-content>
-        </md-card>
+        <md-card-content>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio itaque ea, nostrum odio. Dolores, sed accusantium quasi non, voluptas eius illo quas, saepe voluptate pariatur in deleniti minus sint. Excepturi.
+        </md-card-content>
+      </md-card>
     </md-layout>
   </md-layout>
 </template>
@@ -77,8 +77,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.result-card {
-  margin: 0px 0px 16px 0px;
-  width: 100%;
-}
 </style>
