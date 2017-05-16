@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Main from '@/layouts/Main'
-import frontPage from '@/containers/Front-page'
+import urlSearchMain from '@/containers/Url-search-main'
 import urlPage from '@/containers/Url-page'
 import addUrl from '@/containers/Add-url'
+import wordSearchMain from '@/containers/Word-search-main'
 
 Vue.use(Router)
 
@@ -15,17 +16,22 @@ export default new Router({
       children: [{
         path: '',
         name: 'main',
-        component: frontPage
+        component: wordSearchMain
       },
       {
-        path: 'url/:url',
-        name: 'urlPage',
-        component: urlPage
+        path: '/:topic',
+        name: 'urlSearch',
+        component: urlSearchMain
       },
       {
         path: 'add',
         name: 'add',
         component: addUrl
+      },
+      {
+        path: '/:topic/:url',
+        name: 'urlPage',
+        component: urlPage
       }]
     }
   ]

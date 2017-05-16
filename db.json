@@ -24,5 +24,46 @@
       "url": "https://hombre.com",
       "title": "All about man"
     }
+  ],
+  "topics": [
+    {
+      "topic": "Linear Algebra",
+      "discipline": "Mathematics",
+      "sub-discipline": "Algebra",
+      "field": "Linear Algebra",
+      "description": "The magic world of linear mathematic"
+    },
+    {
+      "topic": "Circular Economy",
+      "discipline": "Economy",
+      "sub-discipline": "Economic systems",
+      "description": "I mean, what isn't better than economy, but with circles added into it"
+    },
+    {
+      "topic": "Friction",
+      "discipline": "Physics",
+      "sub-discipline": "Mechanics",
+      "description": "Thank god for friction ;)"
+    },
+    {
+      "topic": "Non-Linear Algebra",
+      "discipline": "Mathematics",
+      "sub-discipline": "Algebra",
+      "field": "Non-Linear Algebra",
+      "description": "The magic world of nonlinear mathematics :("
+    },
+    {
+      "topic": "Joins",
+      "discipline": "Computer Science",
+      "sub-discipline": "Computing",
+      "field": "Database",
+      "description": "It's web-scale"
+    },
+    {
+      "topic": "Collision Avoidance",
+      "discipline": "Computer Science",
+      "sub-discipline": "Algorithms",
+      "description": "It's web-scale"
+    }
   ]
 }

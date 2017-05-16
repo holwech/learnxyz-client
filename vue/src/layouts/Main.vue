@@ -10,6 +10,11 @@
 <template>
   <div class="main">
     <md-toolbar id="main-search">
+      <router-link :to="{name: 'main'}">
+        <md-button class="md-icon-button">
+          <md-icon>favorite</md-icon>
+        </md-button>
+      </router-link>
       <md-button class="md-icon-button" @click.native="toggleSidenav">
         <md-icon>menu</md-icon>
       </md-button>
@@ -18,9 +23,6 @@
       </md-layout>
       <md-button class="md-icon-button">
         <md-icon>search</md-icon>
-      </md-button>
-      <md-button class="md-icon-button">
-        <md-icon>favorite</md-icon>
       </md-button>
       <router-link :to="{name: 'add'}">
         <md-button class="md-icon-button">
@@ -44,7 +46,6 @@
 </template>
 
 <script>
-import frontPage from '@/containers/Front-page.vue'
 import search from '@/components/Search.vue'
 import sideNav from '@/containers/Side-nav.vue'
 
@@ -56,7 +57,6 @@ export default {
     }
   },
   components: {
-    frontPage,
     search,
     sideNav
   },
