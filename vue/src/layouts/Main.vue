@@ -38,8 +38,8 @@
       <md-layout md-gutter md-flex="20">
         <span></span>
       </md-layout>
-      <md-layout md-gutter>
-        <router-view :search="search"></router-view>
+      <md-layout md-gutter id="main-content">
+        <router-view :search="search" @loading="updateLoadingState"></router-view>
       </md-layout>
     </md-layout >
   </div>
@@ -53,7 +53,8 @@ export default {
   name: 'Front-page',
   data () {
     return {
-      search: ''
+      search: '',
+      loading: true
     }
   },
   components: {
@@ -66,6 +67,9 @@ export default {
     },
     toggleSidenav () {
       this.$refs.sideNav.toggle()
+    },
+    updateLoadingState (loading) {
+      this.loading = loading
     }
   }
 }
@@ -74,5 +78,13 @@ export default {
 <style scoped>
 #main-search {
   margin-bottom: 20px;
+}
+
+#main-content {
+  padding-right: 16px;
+}
+
+.wrapper {
+  width: 100%;
 }
 </style>

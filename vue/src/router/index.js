@@ -9,6 +9,7 @@ import wordSearchMain from '@/containers/Word-search-main'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -19,7 +20,7 @@ export default new Router({
         component: wordSearchMain
       },
       {
-        path: '/:topic',
+        path: '/:topicId',
         name: 'urlSearch',
         component: urlSearchMain
       },
@@ -29,7 +30,7 @@ export default new Router({
         component: addUrl
       },
       {
-        path: '/:topic/:url',
+        path: '/:topicId/:urlId',
         name: 'urlPage',
         component: urlPage
       }]

@@ -12,36 +12,40 @@
 -->
 
 <template>
-  <md-layout md-gutter="16">
-    <md-list class="custom-list md-triple-line">
-      <md-subheader class="md-inset">Today</md-subheader>
-      <md-list-item v-for="item in filteredList" :key="item.url">
-        <md-avatar>
-          <img :src="getFavion(item.url)" alt="People">
-        </md-avatar>
-        <div class="md-list-text-container">
-          <router-link :to="{ name: 'urlPage', params: { topic: item.topic, url: item.url }}">
-            <span>{{ item.title }}</span>
-          </router-link>
-          <a :href="item.url"><span>{{ item.url }}</span></a>
-          <p>{{ item.description }}</p>
-        </div>
-        <md-button class="md-icon-button md-list-action">
-          <md-icon class="md-primary">star</md-icon>
-        </md-button>
-        <md-divider class="md-inset"></md-divider>
-      </md-list-item>
-    </md-list>
-  </md-layout>
+  <md-whiteframe id="url-list">
+    <md-tabs>
+      <md-tab id="movies" md-label="Movies">
+        <urlSearchResults :items="filteredList" :loading="loading"></urlSearchResults>
+      </md-tab>
+
+      <md-tab id="music" md-label="Music">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt dolorum quas amet cum vitae, omnis! Illum quas voluptatem, expedita iste, dicta ipsum ea veniam dolore in, quod saepe reiciendis nihil.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt dolorum quas amet cum vitae, omnis! Illum quas voluptatem, expedita iste, dicta ipsum ea veniam dolore in, quod saepe reiciendis nihil.</p>
+      </md-tab>
+
+      <md-tab id="books" md-label="Books">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt dolorum quas.</p>
+      </md-tab>
+
+      <md-tab id="pictures" md-label="Pictures" md-tooltip="This is the pictures tab!">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt dolorum quas.</p>
+      </md-tab>
+    </md-tabs>
+  </md-whiteframe>
 </template>
 
 <script>
+import urlSearchResults from '@/components/Url-search-results.vue'
 export default {
-  name: 'Front-page',
+  name: 'Url-search-main',
   data () {
     return {
-      urls: []
+      urls: [],
+      loading: true
     }
+  },
+  components: {
+    urlSearchResults
   },
   props: ['search'],
   computed: {
@@ -55,24 +59,28 @@ export default {
     }
   },
   methods: {
-    getFavion (url) {
-      return 'https://www.google.com/s2/favicons?domain=' + url
+    getTopic () {
+      return this.$route.params.topic
     }
   },
   watch: {
     search: function () {
+      this.loading = true
       const api = `http://localhost:3000/urls`
       this.axios.get(api).then(response => {
         this.urls = response.data
+        this.loading = false
       }).catch(error => {
         console.log('AJAX FAILED: ' + error)
       })
     }
   },
   created: function () {
+    this.loading = true
     const api = `http://localhost:3000/urls`
     this.axios.get(api).then(response => {
       this.urls = response.data
+      this.loading = false
     }).catch(error => {
       console.log('AJAX FAILED: ' + error)
     })
@@ -84,5 +92,10 @@ export default {
 <style scoped>
 .custom-list {
   width: 100%;
+}
+
+#url-list {
+  width: 100%;
+  padding: 20px;
 }
 </style>

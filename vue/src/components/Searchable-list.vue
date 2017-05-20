@@ -1,13 +1,14 @@
 <template>
   <ul>
     <li v-for="item in filteredList">{{ item }}</li>
+    <md-spinner md-indeterminate v-if="loading"></md-spinner>
   </ul>
 </template>
 
 <script>
 export default {
   name: 'searchable-list',
-  props: ['search', 'items'],
+  props: ['search', 'items', 'loading'],
   data () {
     return {
     }

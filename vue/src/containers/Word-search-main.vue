@@ -17,22 +17,18 @@
     <md-layout md-flex="33" md-flex-medium="50" md-flex-xsmall="100" v-for="item in filteredList" :key="item">
       <md-card class="result-card">
         <md-card-header>
-          <router-link :to="{ name: 'urlSearch', params: { topic: item.topic }}">
+          <router-link :to="{ name: 'urlSearch', params: { topicId: item.id }}">
             <div class="md-title">{{ item.topic }}</div>
           </router-link>
           <div class="md-subhead">{{ item.discipline }}</div>
         </md-card-header>
-
-        <md-card-actions>
-          <md-button>Action</md-button>
-          <md-button>Action</md-button>
-        </md-card-actions>
 
         <md-card-content>
           {{ item.description }}
         </md-card-content>
       </md-card>
     </md-layout>
+    <md-spinner md-indeterminate v-if="loading"></md-spinner>
   </md-layout>
 </template>
 
@@ -41,7 +37,8 @@ export default {
   name: 'Word-search-main',
   data () {
     return {
-      topics: []
+      topics: [],
+      loading: true
     }
   },
   props: ['search'],
@@ -57,18 +54,22 @@ export default {
   },
   watch: {
     search: function () {
+      this.loading = true
       const api = `http://localhost:3000/topics`
       this.axios.get(api).then(response => {
         this.topics = response.data
+        this.loading = false
       }).catch(error => {
         console.log('AJAX FAILED: ' + error)
       })
     }
   },
   created: function () {
+    this.loading = true
     const api = `http://localhost:3000/topics`
     this.axios.get(api).then(response => {
       this.topics = response.data
+      this.loading = false
     }).catch(error => {
       console.log('AJAX FAILED: ' + error)
     })

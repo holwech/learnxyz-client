@@ -8,7 +8,9 @@ import 'vue-material/dist/vue-material.css'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VeeValidate from 'vee-validate'
+import VueYouTubeEmbed from 'vue-youtube-embed'
 
+Vue.use(VueYouTubeEmbed)
 Vue.use(VeeValidate)
 Vue.use(VueAxios, axios)
 Vue.use(VueMaterial)
