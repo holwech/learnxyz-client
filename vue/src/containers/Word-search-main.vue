@@ -14,6 +14,11 @@
 
 <template>
   <md-layout md-gutter="16">
+    <md-layout v-if="noResult">
+      <router-link :to="{name: 'add'}">
+        <md-button class="md-raised md-accent">Add a topic</md-button>
+      </router-link>
+    </md-layout>
     <md-layout md-flex="33" md-flex-medium="50" md-flex-xsmall="100" v-for="item in filteredList" :key="item">
       <md-card class="result-card">
         <md-card-header>
@@ -38,18 +43,21 @@ export default {
   data () {
     return {
       topics: [],
-      loading: true
+      loading: true,
+      noResult: false
     }
   },
   props: ['search'],
   computed: {
     filteredList: function () {
-      return this.topics.filter((topic) => {
+      let filteredList = this.topics.filter((topic) => {
         if (topic.topic.toLowerCase().indexOf(this.search.toLowerCase()) >= 0 ||
             topic.description.toLowerCase().indexOf(this.search.toLowerCase()) >= 0) {
           return topic
         }
       })
+      this.noResult = filteredList.length < 1
+      return filteredList
     }
   },
   watch: {
@@ -83,4 +91,5 @@ export default {
   width: 100%;
   margin-bottom: 16px;
 }
+
 </style>

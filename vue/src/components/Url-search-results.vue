@@ -13,7 +13,13 @@
 
 <template>
   <md-list class="custom-list md-triple-line">
+    <div v-if="emptyList()">EMPTY</div>
     <md-list-item v-for="item in items" :key="item.url">
+      <div>
+        <md-button class="md-icon-button md-list-action">
+          <md-icon class="md-accent">star</md-icon>
+        </md-button>
+      </div>
       <md-avatar>
         <img :src="getFavion(item.url)" alt="People">
       </md-avatar>
@@ -24,11 +30,9 @@
         <a :href="item.url"><span>{{ item.url }}</span></a>
         <p>{{ item.description }}</p>
       </div>
-      <md-button class="md-icon-button md-list-action">
-        <md-icon class="md-primary">star</md-icon>
-      </md-button>
       <md-divider class="md-inset"></md-divider>
     </md-list-item>
+    <md-spinner md-indeterminate v-if="loading"></md-spinner>
   </md-list>
 </template>
 
@@ -44,6 +48,9 @@ export default {
   methods: {
     getFavion (url) {
       return 'https://www.google.com/s2/favicons?domain=' + url
+    },
+    emptyList () {
+      return this.items.length < 1
     }
   }
 }

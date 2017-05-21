@@ -36,7 +36,7 @@
 
     <md-layout md-gutter="16">
       <md-layout md-gutter md-flex="20">
-        <span></span>
+        <filter-menu></filter-menu>
       </md-layout>
       <md-layout md-gutter id="main-content">
         <router-view :search="search" @loading="updateLoadingState"></router-view>
@@ -48,6 +48,7 @@
 <script>
 import search from '@/components/Search.vue'
 import sideNav from '@/containers/Side-nav.vue'
+import filterMenu from '@/containers/Filter-menu.vue'
 
 export default {
   name: 'Front-page',
@@ -59,7 +60,8 @@ export default {
   },
   components: {
     search,
-    sideNav
+    sideNav,
+    filterMenu
   },
   methods: {
     updateSearchInput: function (search) {
