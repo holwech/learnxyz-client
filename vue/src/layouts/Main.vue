@@ -39,7 +39,7 @@
         <filter-menu></filter-menu>
       </md-layout>
       <md-layout md-gutter id="main-content">
-        <router-view :search="search" @loading="updateLoadingState"></router-view>
+        <router-view @loading="updateLoadingState"></router-view>
       </md-layout>
     </md-layout >
   </div>
@@ -55,7 +55,8 @@ export default {
   data () {
     return {
       search: '',
-      loading: true
+      loading: true,
+      ws: null
     }
   },
   components: {

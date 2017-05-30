@@ -47,6 +47,12 @@ export default {
     submit: function () {
       console.log('Changed!')
     }
+  },
+  created: () => {
+    this.ws = new WebSocket('ws://localhost:3000/ws')
+    this.ws.onmessage = function (event) {
+      console.log(event.data)
+    }
   }
 }
 </script>

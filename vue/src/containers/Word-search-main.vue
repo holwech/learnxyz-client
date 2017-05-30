@@ -38,21 +38,30 @@
 </template>
 
 <script>
+
 export default {
   name: 'Word-search-main',
   data () {
     return {
       topics: [],
-      loading: true,
       noResult: false
     }
   },
-  props: ['search'],
   computed: {
-    filteredList: function () {
-      let filteredList = this.topics.filter((topic) => {
-        if (topic.topic.toLowerCase().indexOf(this.search.toLowerCase()) >= 0 ||
-            topic.description.toLowerCase().indexOf(this.search.toLowerCase()) >= 0) {
+    loading () {
+      return this.$store.state.topics.loading
+    },
+    search () {
+      return this.$store.state.search
+    },
+    filteredList () {
+      let search = this.$store.state.search
+      console.log('SEARCH1: ' + search)
+      console.log(this.$store.state.topics.topics)
+      let filteredList = this.$store.state.topics.topics.filter((topic) => {
+        console.log('SEARCH2: ' + search)
+        if (topic.topic.toLowerCase().indexOf(search.toLowerCase()) >= 0 ||
+            topic.description.toLowerCase().indexOf(search.toLowerCase()) >= 0) {
           return topic
         }
       })
@@ -60,27 +69,8 @@ export default {
       return filteredList
     }
   },
-  watch: {
-    search: function () {
-      this.loading = true
-      const api = `http://localhost:3000/topics`
-      this.axios.get(api).then(response => {
-        this.topics = response.data
-        this.loading = false
-      }).catch(error => {
-        console.log('AJAX FAILED: ' + error)
-      })
-    }
-  },
   created: function () {
-    this.loading = true
-    const api = `http://localhost:3000/topics`
-    this.axios.get(api).then(response => {
-      this.topics = response.data
-      this.loading = false
-    }).catch(error => {
-      console.log('AJAX FAILED: ' + error)
-    })
+    this.$store.dispatch('loadTopics')
   }
 }
 </script>
