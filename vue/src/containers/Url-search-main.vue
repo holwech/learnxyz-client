@@ -38,21 +38,21 @@
 import urlSearchResults from '@/components/Url-search-results.vue'
 export default {
   name: 'Url-search-main',
-  data () {
-    return {
-      urls: [],
-      loading: true
-    }
-  },
   components: {
     urlSearchResults
   },
-  props: ['search'],
   computed: {
+    noResult () {
+      return this.$store.state.topics.noResult
+    },
+    loading () {
+      return this.$store.state.topics.loading
+    },
     filteredList: function () {
-      return this.urls.filter((url) => {
-        if (url.title.toLowerCase().indexOf(this.search.toLowerCase()) >= 0 ||
-            url.url.toLowerCase().indexOf(this.search.toLowerCase()) >= 0) {
+      let search = this.$store.getters.search
+      return this.$store.state.urls.urls.filter(function (url) {
+        if (url.title.toLowerCase().indexOf(search.toLowerCase()) >= 0 ||
+            url.url.toLowerCase().indexOf(search.toLowerCase()) >= 0) {
           return url
         }
       })
@@ -63,27 +63,8 @@ export default {
       return this.$route.params.topic
     }
   },
-  watch: {
-    search: function () {
-      this.loading = true
-      const api = `http://localhost:3000/urls`
-      this.axios.get(api).then(response => {
-        this.urls = response.data
-        this.loading = false
-      }).catch(error => {
-        console.log('AJAX FAILED: ' + error)
-      })
-    }
-  },
   created: function () {
-    this.loading = true
-    const api = `http://localhost:3000/urls`
-    this.axios.get(api).then(response => {
-      this.urls = response.data
-      this.loading = false
-    }).catch(error => {
-      console.log('AJAX FAILED: ' + error)
-    })
+    this.$store.dispatch('urls/loadUrls')
   }
 }
 </script>

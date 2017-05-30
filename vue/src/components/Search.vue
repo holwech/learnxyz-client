@@ -23,7 +23,6 @@ export default {
   },
   computed: {
     inputChange: function () {
-      this.$emit('searchInputChange', this.search)
       this.$store.dispatch({
         type: 'updateSearch',
         input: this.search

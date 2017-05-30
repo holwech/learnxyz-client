@@ -41,36 +41,26 @@
 
 export default {
   name: 'Word-search-main',
-  data () {
-    return {
-      topics: [],
-      noResult: false
-    }
-  },
   computed: {
+    noResult () {
+      return this.$store.state.topics.noResult
+    },
     loading () {
       return this.$store.state.topics.loading
     },
-    search () {
-      return this.$store.state.search
-    },
     filteredList () {
-      let search = this.$store.state.search
-      console.log('SEARCH1: ' + search)
-      console.log(this.$store.state.topics.topics)
-      let filteredList = this.$store.state.topics.topics.filter((topic) => {
-        console.log('SEARCH2: ' + search)
+      let search = this.$store.getters.search
+      let filteredList = this.$store.state.topics.topics.filter(function (topic) {
         if (topic.topic.toLowerCase().indexOf(search.toLowerCase()) >= 0 ||
             topic.description.toLowerCase().indexOf(search.toLowerCase()) >= 0) {
           return topic
         }
       })
-      this.noResult = filteredList.length < 1
       return filteredList
     }
   },
   created: function () {
-    this.$store.dispatch('loadTopics')
+    this.$store.dispatch('topics/loadTopics')
   }
 }
 </script>

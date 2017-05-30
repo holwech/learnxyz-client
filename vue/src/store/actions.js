@@ -1,12 +1,9 @@
 import * as types from './mutation-types'
 
-const actions = {
-  updateSearch ({ commit, state }, search) {
-    commit({
-      type: types.UPDATE_SEARCH,
-      input: search
-    })
-  }
+export const updateSearch = ({ commit, state }, search) => {
+  commit({
+    type: types.UPDATE_SEARCH,
+    input: search.input
+  })
 }
 
-export default actions

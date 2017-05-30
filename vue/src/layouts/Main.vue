@@ -19,7 +19,7 @@
         <md-icon>menu</md-icon>
       </md-button>
       <md-layout md-flex="40">
-        <search v-on:searchInputChange="updateSearchInput"></search>
+        <search></search>
       </md-layout>
       <md-button class="md-icon-button">
         <md-icon>search</md-icon>
@@ -65,9 +65,6 @@ export default {
     filterMenu
   },
   methods: {
-    updateSearchInput: function (search) {
-      this.search = search
-    },
     toggleSidenav () {
       this.$refs.sideNav.toggle()
     },
