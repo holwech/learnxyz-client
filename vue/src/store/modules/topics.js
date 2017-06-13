@@ -1,5 +1,6 @@
 import * as types from '../mutation-types'
 import axios from 'axios'
+import URI from 'urijs'
 
 const state = {
   topics: [],
@@ -19,6 +20,9 @@ const mutations = {
   },
   [types.UPDATE_FILTERED_TOPICS] (state, filteredTopics) {
     state.filteredTopics = filteredTopics
+  },
+  [types.UPDATE_SEARCH] (state, search) {
+    state.search = search
   }
 }
 
@@ -29,7 +33,7 @@ const getters = {
 const actions = {
   loadTopics ({ commit, state }) {
     commit(types.REQUESTING_DATA)
-    const api = `http://localhost:8091/topics/`
+    const api = `http://localhost:8091/topics/search`
     axios.get(api).then(response => {
       commit(types.REQUEST_SUCCESS, response.data)
     }).catch(error => {
@@ -37,9 +41,12 @@ const actions = {
     })
   },
   updateSearch ({ commit, state }, search) {
+    commit(types.UPDATE_SEARCH, search.input)
     commit(types.REQUESTING_DATA)
     // Get new topics based on the search input
-    const api = `http://localhost:8091/topics/`
+    let uri = new URI('http://localhost:8091/topics/search')
+    uri.search({ search: search.input })
+    const api = uri.toString()
     axios.get(api).then(response => {
       commit(types.REQUEST_SUCCESS, response.data)
     }).catch(error => {

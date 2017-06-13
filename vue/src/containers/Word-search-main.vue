@@ -49,14 +49,13 @@ export default {
       return this.$store.state.topics.loading
     },
     filteredList () {
-      let search = this.$store.getters.search
-      let filteredList = this.$store.state.topics.topics.filter(function (topic) {
+      let search = this.$store.state.search
+      return this.$store.state.topics.topics.filter(function (topic) {
         if (topic.topic.toLowerCase().indexOf(search.toLowerCase()) >= 0 ||
             topic.description.toLowerCase().indexOf(search.toLowerCase()) >= 0) {
           return topic
         }
       })
-      return filteredList
     }
   },
   created: function () {

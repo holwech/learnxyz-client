@@ -9,11 +9,13 @@
 
 <template>
   <md-input-container class="md-flex">
-    <md-input v-model="search" :change="inputChange"></md-input>
+    <md-input v-model="search" :change="inputChange()"></md-input>
   </md-input-container>
 </template>
 
 <script>
+import _ from 'lodash'
+
 export default {
   name: 'search',
   data () {
@@ -21,13 +23,16 @@ export default {
       search: ''
     }
   },
-  computed: {
-    inputChange: function () {
-      this.$store.dispatch({
-        type: 'updateSearch',
-        input: this.search
-      })
-    }
+  methods: {
+    inputChange: _.debounce(
+      function () {
+        this.$store.dispatch({
+          type: 'updateSearch',
+          input: this.search
+        })
+      },
+      300
+    )
   }
 }
 </script>

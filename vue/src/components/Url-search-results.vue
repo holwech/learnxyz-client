@@ -13,7 +13,11 @@
 
 <template>
   <md-list class="custom-list md-triple-line">
-    <div v-if="emptyList()">EMPTY</div>
+    <md-layout v-if="noResult">
+      <router-link :to="{name: 'add', query: { id: route.params.topicId }}">
+        <md-button class="md-raised md-accent">Add a URL</md-button>
+      </router-link>
+    </md-layout>
     <md-list-item v-for="item in items" :key="item.url">
       <div>
         <md-button class="md-icon-button md-list-action">
@@ -51,6 +55,12 @@ export default {
     },
     emptyList () {
       return this.items.length < 1
+    },
+    noResult () {
+      return this.$store.state.topics.noResult
+    },
+    loading () {
+      return this.$store.state.topics.loading
     }
   }
 }

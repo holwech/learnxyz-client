@@ -20,14 +20,14 @@ export default new Router({
         component: wordSearchMain
       },
       {
-        path: '/:topicId',
-        name: 'urlSearch',
-        component: urlSearchMain
-      },
-      {
         path: 'add',
         name: 'add',
         component: addUrl
+      },
+      {
+        path: '/:topicId',
+        name: 'urlSearch',
+        component: urlSearchMain
       },
       {
         path: '/:topicId/:urlId',
