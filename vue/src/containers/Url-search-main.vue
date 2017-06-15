@@ -48,7 +48,7 @@ export default {
     loading () {
       return this.$store.state.topics.loading
     },
-    filteredList: function () {
+    filteredList () {
       let search = this.$store.getters.search
       return this.$store.state.urls.urls.filter(function (url) {
         if (url.title.toLowerCase().indexOf(search.toLowerCase()) >= 0 ||
