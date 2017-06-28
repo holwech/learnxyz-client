@@ -1,12 +1,16 @@
 import * as types from './mutation-types'
 
-export const updateSearch = ({ commit, state, dispatch }, search) => {
+export const updateSearch = ({ commit, state, dispatch }, data) => {
   commit({
     type: types.UPDATE_SEARCH,
-    input: search.input
+    input: data.search
   })
+  let type = 'topics/updateSearch'
+  if (data.pathName === 'urlSearch') {
+    type = 'urls/updateSearch'
+  }
   dispatch({
-    type: 'topics/updateSearch',
+    type: type,
     input: this.search
   })
 }

@@ -14,13 +14,17 @@
 <template>
   <md-whiteframe id="url-list">
     <md-tabs>
-      <md-tab id="movies" md-label="Movies">
+      <md-tab id="videos" md-label="Videos">
         <urlSearchResults :items="filteredList" :loading="loading"></urlSearchResults>
       </md-tab>
 
-      <md-tab id="music" md-label="Music">
+      <md-tab id="website" md-label="Websites">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt dolorum quas amet cum vitae, omnis! Illum quas voluptatem, expedita iste, dicta ipsum ea veniam dolore in, quod saepe reiciendis nihil.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt dolorum quas amet cum vitae, omnis! Illum quas voluptatem, expedita iste, dicta ipsum ea veniam dolore in, quod saepe reiciendis nihil.</p>
+      </md-tab>
+
+      <md-tab id="pdfs" md-label="PDFs">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt dolorum quas.</p>
       </md-tab>
 
       <md-tab id="books" md-label="Books">
@@ -43,10 +47,10 @@ export default {
   },
   computed: {
     noResult () {
-      return this.$store.state.topics.noResult
+      return this.$store.state.urls.noResult
     },
     loading () {
-      return this.$store.state.topics.loading
+      return this.$store.state.urls.loading
     },
     filteredList: function () {
       let search = this.$store.getters.search
@@ -59,12 +63,15 @@ export default {
     }
   },
   methods: {
-    getTopic () {
-      return this.$route.params.topic
+    getTopicId () {
+      return this.$route.params.topicId
     }
   },
   created: function () {
-    this.$store.dispatch('urls/loadUrls')
+    this.$store.dispatch('urls/loadUrls', this.$route.params.topicId)
+  },
+  destroyed () {
+    this.$store.dispatch('urls/clearData')
   }
 }
 </script>

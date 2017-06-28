@@ -2,7 +2,7 @@
   <md-layout md-flex-small="100" md-flex="80">
     <md-whiteframe id="menu">
       <md-tabs v-if="!success && !loading">
-        <md-tab id="resource" md-label="Add Resource">
+        <md-tab id="resource" md-label="Add Resource" v-if="$route.query.topicId">
           <form novalidate @submit.stop.prevent="submitResource">
             <md-input-container :class="{'md-input-invalid': errors.has('title') }">
               <label>Title</label>
@@ -40,6 +40,44 @@
                 type="text">
               </md-textarea>
               <span class="md-error" v-show="errors.has('description')"> {{ errors.first('description') }}
+              </span>
+            </md-input-container>
+
+            <md-input-container :class="{'md-input-invalid': errors.has('tags') }">
+              <label>Tags (split with commas)</label>
+              <md-textarea
+                v-model="tags"
+                v-validate="'required'"
+                data-vv-delay="1000" data-vv-name="tags"
+                :has-error="errors.has('tags')"
+                type="text">
+              </md-textarea>
+              <span class="md-error" v-show="errors.has('tags')"> {{ errors.first('tags') }}
+              </span>
+            </md-input-container>
+
+            <md-input-container>
+              <label>Type</label>
+              <md-select id="type" v-model="resourceData.type">
+                <md-option value="Video">Video</md-option>
+                <md-option value="Website">Website</md-option>
+                <md-option value="PDF">PDF</md-option>
+                <md-option value="Books">Books</md-option>
+                <md-option value="Image">Image</md-option>
+              </md-select>
+            </md-input-container>
+
+            <md-input-container :class="{'md-input-invalid': errors.has('relatedTopicId') }">
+              <label>Topic ID</label>
+              <md-input
+                v-model="resourceData.relatedTopicId"
+                v-validate="'required'"
+                data-vv-delay="1000" data-vv-name="relatedTopicId"
+                :has-error="errors.has('relatedTopicId')"
+                disabled
+                type="text">
+              </md-input>
+              <span class="md-error" v-show="errors.has('relatedTopicId')"> {{ errors.first('relatedTopicId') }}
               </span>
             </md-input-container>
             <md-button class="md-raised md-primary" type="submit">Send</md-button>
@@ -139,6 +177,7 @@ export default {
       success: false,
       loading: false,
       responseMessage: '',
+      tags: '',
       topicData: {
         topic: '',
         discipline: '',
@@ -150,6 +189,8 @@ export default {
         title: '',
         url: '',
         description: '',
+        type: '',
+        tags: [],
         relatedTopicId: ''
       }
     }
@@ -158,11 +199,11 @@ export default {
     submitResource (event) {
       this.loading = true
       let uri = new URI('http://localhost:8091/resources/add')
-      uri.search({...this.resourceData, relatedTopicId: this.$route.query.topicId})
+      this.resourceData.tags = this.tags.split(',')
+      uri.search({...this.resourceData})
       const api = uri.toString()
       console.log('Api is ' + api)
       this.axios.get(api).then(response => {
-        console.log(response.data)
         if (response.data.Response === 'Success') {
           this.success = true
           this.responseMessage = response.data.Description
@@ -188,7 +229,13 @@ export default {
       }).catch(error => {
         console.log('AJAX FAILED: ' + error)
       })
+    },
+    tabChange (event) {
+      console.log(event)
     }
+  },
+  created () {
+    this.resourceData.relatedTopicId = this.$route.query.topicId
   }
 }
 </script>

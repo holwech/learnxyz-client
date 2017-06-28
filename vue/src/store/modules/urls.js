@@ -1,5 +1,6 @@
 import * as types from '../mutation-types'
 import axios from 'axios'
+import URI from 'urijs'
 
 const state = {
   urls: [],
@@ -16,6 +17,14 @@ const mutations = {
     state.noResult = urls.length < 1
     state.urls = urls
     state.loading = false
+    console.log('Loading: ' + state.loading)
+  },
+  [types.UPDATE_SEARCH] (state, search) {
+    state.search = search
+  },
+  [types.CLEAR_DATA] (state) {
+    state.urls = []
+    state.noResult = null
   }
 }
 
@@ -24,9 +33,12 @@ const getters = {
 }
 
 const actions = {
-  loadUrls ({ commit, state }) {
+  loadUrls ({ commit, state }, id) {
     commit(types.REQUESTING_DATA)
-    const api = `http://localhost:3000/urls/`
+    // Get new topics based on the search input
+    let uri = new URI('http://localhost:8091/resources/get')
+    uri.search({ id })
+    const api = uri.toString()
     axios.get(api).then(response => {
       commit(types.REQUEST_SUCCESS, response.data)
     }).catch(error => {
@@ -34,14 +46,10 @@ const actions = {
     })
   },
   updateSearch ({ commit, state }, search) {
-    commit(types.REQUESTING_DATA)
-    // Get new topics based on the search input
-    const api = `http://localhost:3000/urls/`
-    axios.get(api).then(response => {
-      commit(types.REQUEST_SUCCESS, response.data)
-    }).catch(error => {
-      console.log('AJAX FAILED: ' + error)
-    })
+    console.log('updateSearch called!')
+  },
+  clearData ({ commit, state }) {
+    commit(types.CLEAR_DATA)
   }
 }
 

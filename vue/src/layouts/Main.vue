@@ -24,7 +24,7 @@
       <md-button class="md-icon-button">
         <md-icon>search</md-icon>
       </md-button>
-      <router-link :to="{name: 'add'}">
+      <router-link :to="{name: 'add', query: {topicId: topicId}}">
         <md-button class="md-icon-button">
           <md-icon>add circle</md-icon>
         </md-button>
@@ -70,6 +70,11 @@ export default {
     },
     updateLoadingState (loading) {
       this.loading = loading
+    }
+  },
+  computed: {
+    topicId () {
+      return this.$route.params.topicId
     }
   }
 }

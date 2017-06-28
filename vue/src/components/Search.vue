@@ -28,7 +28,8 @@ export default {
       function () {
         this.$store.dispatch({
           type: 'updateSearch',
-          input: this.search
+          search: this.search,
+          pathName: this.$route.name
         })
       },
       300

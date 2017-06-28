@@ -13,11 +13,6 @@
 
 <template>
   <md-list class="custom-list md-triple-line">
-    <md-layout v-if="noResult">
-      <router-link :to="{name: 'add', query: { id: route.params.topicId }}">
-        <md-button class="md-raised md-accent">Add a URL</md-button>
-      </router-link>
-    </md-layout>
     <md-list-item v-for="item in items" :key="item.url">
       <div>
         <md-button class="md-icon-button md-list-action">
@@ -36,6 +31,11 @@
       </div>
       <md-divider class="md-inset"></md-divider>
     </md-list-item>
+    <md-layout v-if="noResult">
+      <router-link :to="{name: 'add', query: {topicId: topicId}}">
+        <md-button class="md-raised md-accent">Add a URL</md-button>
+      </router-link>
+    </md-layout>
     <md-spinner md-indeterminate v-if="loading"></md-spinner>
   </md-list>
 </template>
@@ -43,24 +43,21 @@
 <script>
 export default {
   name: 'Url-search-results',
-  data () {
-    return {
-      urls: []
-    }
-  },
-  props: ['items', 'loading'],
+  props: ['items'],
   methods: {
     getFavion (url) {
       return 'https://www.google.com/s2/favicons?domain=' + url
-    },
-    emptyList () {
-      return this.items.length < 1
+    }
+  },
+  computed: {
+    topicId () {
+      return this.$route.params.topicId
     },
     noResult () {
-      return this.$store.state.topics.noResult
+      return this.$store.state.urls.noResult
     },
     loading () {
-      return this.$store.state.topics.loading
+      return this.$store.state.urls.loading
     }
   }
 }
