@@ -28,6 +28,9 @@
         </router-link>
         <a :href="item.url"><span>{{ item.url }}</span></a>
         <p>{{ item.description }}</p>
+        <md-layout md-gutter>
+          <md-chip class="md-accent tag" v-for="tag in item.tags" :key="tag">{{ tag }}</md-chip>
+        </md-layout>
       </div>
       <md-divider class="md-inset"></md-divider>
     </md-list-item>
@@ -67,6 +70,10 @@ export default {
 <style scoped>
 .custom-list {
   width: 100%;
+}
+
+.tag {
+  width: 100px;
 }
 
 </style>
