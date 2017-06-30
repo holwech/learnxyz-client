@@ -1,38 +1,24 @@
-<!--
-  Shows a list of items and hides items that do not match the search input
-
-  PROPS: 
-    search: string with a given search input
-  EMITS:
-    NONE
-    
-  <ul>
-    <li v-for="item in filteredList">{{ item }}</li>
-  </ul>
--->
-
 <template>
   <md-whiteframe id="resource-list">
-    <md-tabs>
+    <md-tabs v-on:change="tabChange">
       <md-tab id="videos" md-label="Videos">
         <resultList :items="filteredList" :loading="loading"></resultList>
       </md-tab>
 
       <md-tab id="website" md-label="Websites">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt dolorum quas amet cum vitae, omnis! Illum quas voluptatem, expedita iste, dicta ipsum ea veniam dolore in, quod saepe reiciendis nihil.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt dolorum quas amet cum vitae, omnis! Illum quas voluptatem, expedita iste, dicta ipsum ea veniam dolore in, quod saepe reiciendis nihil.</p>
+        <resultList :items="filteredList" :loading="loading"></resultList>
       </md-tab>
 
       <md-tab id="pdfs" md-label="PDFs">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt dolorum quas.</p>
+        <resultList :items="filteredList" :loading="loading"></resultList>
       </md-tab>
 
       <md-tab id="books" md-label="Books">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt dolorum quas.</p>
+        <resultList :items="filteredList" :loading="loading"></resultList>
       </md-tab>
 
       <md-tab id="pictures" md-label="Pictures" md-tooltip="This is the pictures tab!">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt dolorum quas.</p>
+        <resultList :items="filteredList" :loading="loading"></resultList>
       </md-tab>
     </md-tabs>
   </md-whiteframe>
@@ -44,6 +30,11 @@ export default {
   name: 'Resource-results',
   components: {
     resultList
+  },
+  data () {
+    return {
+      currentTab: 0
+    }
   },
   computed: {
     noResult () {
@@ -65,10 +56,22 @@ export default {
   methods: {
     getTopicId () {
       return this.$route.params.topicId
+    },
+    tabChange (tab) {
+      if (tab !== this.currentTab) {
+        this.currentTab = tab
+        let tabNames = ['video', 'website', 'pdf', 'books', 'pictures']
+        this.$store.dispatch('resources/loadResources', {
+          topicId: this.$route.params.topicId,
+          tab: tabNames[tab]
+        })
+      }
     }
   },
   created: function () {
-    this.$store.dispatch('resources/loadUrls', this.$route.params.topicId)
+    this.$store.dispatch('resources/loadResources', {
+      topicId: this.$route.params.topicId
+    })
   },
   destroyed () {
     this.$store.dispatch('resources/clearData')

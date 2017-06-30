@@ -33,11 +33,11 @@ const getters = {
 }
 
 const actions = {
-  loadUrls ({ commit, state }, id) {
+  loadResources ({ commit, state }, queries) {
     commit(types.REQUESTING_DATA)
     // Get new topics based on the search input
     let uri = new URI('http://localhost:8091/resources/get')
-    uri.search({ id })
+    uri.search({ ...queries })
     const api = uri.toString()
     axios.get(api).then(response => {
       commit(types.REQUEST_SUCCESS, response.data)

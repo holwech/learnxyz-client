@@ -48,7 +48,7 @@
 <script>
 import search from '@/components/Search.vue'
 import sideNav from '@/containers/Side-nav.vue'
-import filterMenu from '@/containers/Filter-menu.vue'
+import filterMenu from '@/containers/Filter.vue'
 
 export default {
   name: 'Front-page',

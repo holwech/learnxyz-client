@@ -25,7 +25,11 @@
           <router-link :to="{ name: 'resourceResults', params: { topicId: item.id }}">
             <div class="md-title">{{ item.topic }}</div>
           </router-link>
-          <div class="md-subhead">{{ item.discipline }}</div>
+          <div class="md-subhead">
+            {{ item.discipline }}
+            <span v-if="item.subDiscipline"> - {{ item.subDiscipline }}</span>
+            <span v-if="item.field"> - {{ item.field }}</span>
+          </div>
         </md-card-header>
 
         <md-card-content>

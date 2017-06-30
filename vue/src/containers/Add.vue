@@ -219,7 +219,7 @@ export default {
       uri.search({...this.topicData})
       const api = uri.toString()
       console.log('Api is ' + api)
-      this.axios.get(api).then(response => {
+      this.axios.post(api).then(response => {
         console.log(response.data)
         if (response.data.Response === 'Success') {
           this.success = true
