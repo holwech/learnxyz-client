@@ -12,10 +12,10 @@
 -->
 
 <template>
-  <md-whiteframe id="url-list">
+  <md-whiteframe id="resource-list">
     <md-tabs>
       <md-tab id="videos" md-label="Videos">
-        <urlSearchResults :items="filteredList" :loading="loading"></urlSearchResults>
+        <resultList :items="filteredList" :loading="loading"></resultList>
       </md-tab>
 
       <md-tab id="website" md-label="Websites">
@@ -39,22 +39,22 @@
 </template>
 
 <script>
-import urlSearchResults from '@/components/Url-search-results.vue'
+import resultList from '@/components/Results-list'
 export default {
-  name: 'Url-search-main',
+  name: 'Resource-results',
   components: {
-    urlSearchResults
+    resultList
   },
   computed: {
     noResult () {
-      return this.$store.state.urls.noResult
+      return this.$store.state.resources.noResult
     },
     loading () {
-      return this.$store.state.urls.loading
+      return this.$store.state.resources.loading
     },
     filteredList () {
       let search = this.$store.getters.search
-      return this.$store.state.urls.urls.filter(function (url) {
+      return this.$store.state.resources.resources.filter(function (url) {
         if (url.title.toLowerCase().indexOf(search.toLowerCase()) >= 0 ||
             url.url.toLowerCase().indexOf(search.toLowerCase()) >= 0) {
           return url
@@ -68,10 +68,10 @@ export default {
     }
   },
   created: function () {
-    this.$store.dispatch('urls/loadUrls', this.$route.params.topicId)
+    this.$store.dispatch('resources/loadUrls', this.$route.params.topicId)
   },
   destroyed () {
-    this.$store.dispatch('urls/clearData')
+    this.$store.dispatch('resources/clearData')
   }
 }
 </script>
@@ -82,7 +82,7 @@ export default {
   width: 100%;
 }
 
-#url-list {
+#resource-list {
   width: 100%;
 }
 </style>

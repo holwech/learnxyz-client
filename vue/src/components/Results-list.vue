@@ -45,7 +45,7 @@
 
 <script>
 export default {
-  name: 'Url-search-results',
+  name: 'Results-list',
   props: ['items'],
   methods: {
     getFavion (url) {
@@ -57,10 +57,10 @@ export default {
       return this.$route.params.topicId
     },
     noResult () {
-      return this.$store.state.urls.noResult
+      return this.$store.state.resources.noResult
     },
     loading () {
-      return this.$store.state.urls.loading
+      return this.$store.state.resources.loading
     }
   }
 }

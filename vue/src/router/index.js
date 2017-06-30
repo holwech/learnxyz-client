@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Main from '@/layouts/Main'
-import urlSearchMain from '@/containers/Url-search-main'
+import resourceResults from '@/containers/Resource-results'
 import urlPage from '@/containers/Url-page'
-import addUrl from '@/containers/Add-url'
-import wordSearchMain from '@/containers/Word-search-main'
+import add from '@/containers/Add'
+import topicSearch from '@/containers/Topic-search'
 
 Vue.use(Router)
 
@@ -17,17 +17,17 @@ export default new Router({
       children: [{
         path: '',
         name: 'main',
-        component: wordSearchMain
+        component: topicSearch
       },
       {
         path: 'add',
         name: 'add',
-        component: addUrl
+        component: add
       },
       {
         path: '/:topicId',
-        name: 'urlSearch',
-        component: urlSearchMain
+        name: 'resourceResults',
+        component: resourceResults
       },
       {
         path: '/:topicId/:urlId',

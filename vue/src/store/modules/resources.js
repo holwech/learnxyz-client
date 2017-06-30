@@ -3,8 +3,8 @@ import axios from 'axios'
 import URI from 'urijs'
 
 const state = {
-  urls: [],
-  filteredUrls: [],
+  resources: [],
+  filteredResources: [],
   loading: null,
   noResult: null
 }
@@ -13,9 +13,9 @@ const mutations = {
   [types.REQUESTING_DATA] (state) {
     state.loading = true
   },
-  [types.REQUEST_SUCCESS] (state, urls) {
-    state.noResult = urls.length < 1
-    state.urls = urls
+  [types.REQUEST_SUCCESS] (state, resources) {
+    state.noResult = resources.length < 1
+    state.resources = resources
     state.loading = false
     console.log('Loading: ' + state.loading)
   },
@@ -23,13 +23,13 @@ const mutations = {
     state.search = search
   },
   [types.CLEAR_DATA] (state) {
-    state.urls = []
+    state.resources = []
     state.noResult = null
   }
 }
 
 const getters = {
-  urls: state => state.urls
+  resources: state => state.resources
 }
 
 const actions = {

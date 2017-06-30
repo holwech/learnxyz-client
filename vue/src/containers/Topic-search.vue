@@ -22,7 +22,7 @@
     <md-layout md-flex="33" md-flex-medium="50" md-flex-xsmall="100" v-for="item in filteredList" :key="item">
       <md-card class="result-card">
         <md-card-header>
-          <router-link :to="{ name: 'urlSearch', params: { topicId: item.id }}">
+          <router-link :to="{ name: 'resourceResults', params: { topicId: item.id }}">
             <div class="md-title">{{ item.topic }}</div>
           </router-link>
           <div class="md-subhead">{{ item.discipline }}</div>
