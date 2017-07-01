@@ -9,9 +9,8 @@ export const updateSearch = ({ commit, state, dispatch }, data) => {
   if (data.pathName === 'urlSearch') {
     type = 'urls/updateSearch'
   }
-  dispatch({
-    type: type,
-    input: this.search
+  dispatch(type, {
+    search: data.search
   })
 }
 

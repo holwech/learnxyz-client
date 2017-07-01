@@ -59,11 +59,13 @@
             <md-input-container>
               <label>Type</label>
               <md-select id="type" v-model="resourceData.type">
-                <md-option value="Video">Video</md-option>
-                <md-option value="Website">Website</md-option>
-                <md-option value="PDF">PDF</md-option>
-                <md-option value="Books">Books</md-option>
-                <md-option value="Image">Image</md-option>
+                <md-option
+                  v-for="label in labels"
+                  :value="label"
+                  :key="label"
+                >
+                  {{ label }}
+                </md-option>
               </md-select>
             </md-input-container>
 
@@ -99,31 +101,30 @@
               </span>
             </md-input-container>
 
-            <md-input-container :class="{'md-input-invalid': errors.has('discipline') }">
+            <md-input-container>
               <label>Discipline</label>
-              <md-input
-                v-model="topicData.discipline"
-                v-validate="'required'"
-                data-vv-delay="1000"
-                data-vv-name="discipline"
-                :has-error="errors.has('discipline')"
-                type="text">
-              </md-input>
-              <span class="md-error" v-show="errors.has('discipline')"> {{ errors.first('discipline') }}
-              </span>
+              <md-select v-model="topicData.discipline">
+                <md-option
+                  v-for="(discipline, key) in disciplines"
+                  :value="key"
+                  :key="key"
+                >
+                    {{ key }}
+                </md-option>
+              </md-select>
             </md-input-container>
 
-            <md-input-container :class="{'md-input-invalid': errors.has('subDiscipline') }">
-              <label>Field</label>
-              <md-input
-                v-model="topicData.subDiscipline"
-                v-validate="'required'"
-                data-vv-delay="1000"
-                data-vv-name="subDiscipline"
-                :has-error="errors.has('subDiscipline')"
-                type="text">
-              </md-input>
-              <span class="md-error" v-show="errors.has('subDiscipline')">{{ errors.first('subDiscipline') }}</span>
+            <md-input-container v-if="topicData.discipline !== ''">
+              <label>Sub-discipline</label>
+              <md-select v-model="topicData.subDiscipline">
+                <md-option
+                  v-for="subDiscipline in disciplines[topicData.discipline]"
+                  :value="subDiscipline"
+                  :key="subDiscipline"
+                >
+                    {{ subDiscipline }}
+                </md-option>
+              </md-select>
             </md-input-container>
 
             <md-input-container :class="{'md-input-invalid': errors.has('field') }">
@@ -170,10 +171,14 @@
 
 <script>
 import URI from 'urijs'
+import disciplines from '../static/disciplines'
+import labels from '../static/resources-tabs'
 
 export default {
   data () {
     return {
+      disciplines: disciplines,
+      labels: labels,
       success: false,
       loading: false,
       responseMessage: '',
@@ -203,7 +208,7 @@ export default {
       uri.search({...this.resourceData})
       const api = uri.toString()
       console.log('Api is ' + api)
-      this.axios.get(api).then(response => {
+      this.axios.post(api).then(response => {
         if (response.data.Response === 'Success') {
           this.success = true
           this.responseMessage = response.data.Description

@@ -1,12 +1,12 @@
 import * as types from '../mutation-types'
 import axios from 'axios'
-import URI from 'urijs'
 
 const state = {
   topics: [],
   filteredTopics: [],
   loading: null,
-  noResult: null
+  noResult: null,
+  search: ''
 }
 
 const mutations = {
@@ -31,23 +31,18 @@ const getters = {
 }
 
 const actions = {
-  loadTopics ({ commit, state }) {
-    commit(types.REQUESTING_DATA)
-    const api = `http://localhost:8091/topics/search`
-    axios.get(api).then(response => {
-      commit(types.REQUEST_SUCCESS, response.data)
-    }).catch(error => {
-      console.log('AJAX FAILED: ' + error)
-    })
+  updateSearch ({ commit, state, dispatch }, data) {
+    commit(types.UPDATE_SEARCH, data.search)
+    dispatch('getTopics')
   },
-  updateSearch ({ commit, state }, search) {
-    commit(types.UPDATE_SEARCH, search.input)
+  getTopics ({ commit, state }) {
     commit(types.REQUESTING_DATA)
-    // Get new topics based on the search input
-    let uri = new URI('http://localhost:8091/topics/search')
-    uri.search({ search: search.input })
-    const api = uri.toString()
-    axios.get(api).then(response => {
+    const api = `http://localhost:8091/topics/get`
+    axios.get(api, {
+      params: {
+        search: state.search
+      }
+    }).then(response => {
       commit(types.REQUEST_SUCCESS, response.data)
     }).catch(error => {
       console.log('AJAX FAILED: ' + error)

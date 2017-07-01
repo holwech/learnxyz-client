@@ -1,31 +1,17 @@
 <template>
   <md-whiteframe id="resource-list">
     <md-tabs v-on:change="tabChange">
-      <md-tab id="videos" md-label="Videos">
+      <md-tab v-for="label in labels" :key="label" :md-label="label">
         <resultList :items="filteredList" :loading="loading"></resultList>
       </md-tab>
 
-      <md-tab id="website" md-label="Websites">
-        <resultList :items="filteredList" :loading="loading"></resultList>
-      </md-tab>
-
-      <md-tab id="pdfs" md-label="PDFs">
-        <resultList :items="filteredList" :loading="loading"></resultList>
-      </md-tab>
-
-      <md-tab id="books" md-label="Books">
-        <resultList :items="filteredList" :loading="loading"></resultList>
-      </md-tab>
-
-      <md-tab id="pictures" md-label="Pictures" md-tooltip="This is the pictures tab!">
-        <resultList :items="filteredList" :loading="loading"></resultList>
-      </md-tab>
     </md-tabs>
   </md-whiteframe>
 </template>
 
 <script>
 import resultList from '@/components/Results-list'
+import labels from '../static/resources-tabs'
 export default {
   name: 'Resource-results',
   components: {
@@ -33,7 +19,8 @@ export default {
   },
   data () {
     return {
-      currentTab: 0
+      currentTab: 0,
+      labels: labels
     }
   },
   computed: {
@@ -57,20 +44,21 @@ export default {
     getTopicId () {
       return this.$route.params.topicId
     },
-    tabChange (tab) {
-      if (tab !== this.currentTab) {
-        this.currentTab = tab
-        let tabNames = ['video', 'website', 'pdf', 'books', 'pictures']
+    tabChange (selectedTab) {
+      if (selectedTab !== this.currentTab) {
+        this.currentTab = selectedTab
+        this.$store.dispatch('resources/clearData')
         this.$store.dispatch('resources/loadResources', {
           topicId: this.$route.params.topicId,
-          tab: tabNames[tab]
+          type: labels[selectedTab]
         })
       }
     }
   },
   created: function () {
     this.$store.dispatch('resources/loadResources', {
-      topicId: this.$route.params.topicId
+      topicId: this.$route.params.topicId,
+      type: this.labels[this.currentTab]
     })
   },
   destroyed () {

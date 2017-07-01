@@ -61,9 +61,6 @@ export default {
         }
       })
     }
-  },
-  created: function () {
-    this.$store.dispatch('topics/loadTopics')
   }
 }
 </script>

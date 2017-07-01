@@ -26,8 +26,7 @@ export default {
   methods: {
     inputChange: _.debounce(
       function () {
-        this.$store.dispatch({
-          type: 'updateSearch',
+        this.$store.dispatch('updateSearch', {
           search: this.search,
           pathName: this.$route.name
         })
