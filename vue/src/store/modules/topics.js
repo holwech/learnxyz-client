@@ -6,7 +6,8 @@ const state = {
   filteredTopics: [],
   loading: null,
   noResult: null,
-  search: ''
+  search: '',
+  subDisciplineFilter: []
 }
 
 const mutations = {
@@ -23,6 +24,17 @@ const mutations = {
   },
   [types.UPDATE_SEARCH] (state, search) {
     state.search = search
+  },
+  [types.UPDATE_SUBDISCIPLINE_FILTER] (state, data) {
+    if (data.toggle) {
+      state.subDisciplineFilter.push(data.subDiscipline)
+    } else {
+      let index = state.subDisciplineFilter.indexOf(data.subDiscipline)
+      if (index > -1) {
+        state.subDisciplineFilter.splice(index, 1)
+      }
+    }
+    console.log(state.subDisciplineFilter)
   }
 }
 
@@ -35,12 +47,17 @@ const actions = {
     commit(types.UPDATE_SEARCH, data.search)
     dispatch('getTopics')
   },
+  updateSubDisciplineFilter ({ commit, dispatch }, data) {
+    commit(types.UPDATE_SUBDISCIPLINE_FILTER, data)
+    dispatch('getTopics')
+  },
   getTopics ({ commit, state }) {
     commit(types.REQUESTING_DATA)
     const api = `http://localhost:8091/topics/get`
     axios.get(api, {
       params: {
-        search: state.search
+        search: state.search,
+        subDisciplineFilter: state.subDisciplineFilter
       }
     }).then(response => {
       commit(types.REQUEST_SUCCESS, response.data)

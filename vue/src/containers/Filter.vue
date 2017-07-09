@@ -9,7 +9,11 @@
         <md-list-expand>
           <md-list>
             <md-list-item v-for="subDiscipline in discipline" :key="subDiscipline">
-              <md-checkbox>{{ subDiscipline }}</md-checkbox>
+              <md-checkbox
+                @change="checkboxChange($event, subDiscipline)"
+              >
+                {{ subDiscipline }}
+              </md-checkbox>
             </md-list-item>
           </md-list>
         </md-list-expand>
@@ -25,6 +29,14 @@ export default {
   data () {
     return {
       disciplines: disciplines
+    }
+  },
+  methods: {
+    checkboxChange (toggle, subDiscipline) {
+      this.$store.dispatch('topics/updateSubDisciplineFilter', {
+        toggle: toggle,
+        subDiscipline: subDiscipline
+      })
     }
   }
 }

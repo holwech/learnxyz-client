@@ -5,6 +5,7 @@ import resourceResults from '@/containers/Resource-results'
 import urlPage from '@/containers/Url-page'
 import add from '@/containers/Add'
 import topicSearch from '@/containers/Topic-search'
+import UserLogin from '@/containers/User-login'
 
 Vue.use(Router)
 
@@ -18,6 +19,11 @@ export default new Router({
         path: '',
         name: 'main',
         component: topicSearch
+      },
+      {
+        path: '/user-login',
+        name: 'userLogin',
+        component: UserLogin
       },
       {
         path: 'add',

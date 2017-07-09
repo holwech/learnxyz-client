@@ -13,4 +13,3 @@ export const updateSearch = ({ commit, state, dispatch }, data) => {
     search: data.search
   })
 }
-
