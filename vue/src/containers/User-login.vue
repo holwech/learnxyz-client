@@ -7,7 +7,7 @@
             <md-input-container :class="{'md-input-invalid': errors.has('username') }">
               <label>Username</label>
               <md-input
-                v-model="userdata.username"
+                v-model="userData.username"
                 v-validate="'required'"
                 data-vv-delay="1000" data-vv-name="username"
                 :has-error="errors.has('username')"
@@ -20,7 +20,7 @@
             <md-input-container :class="{'md-input-invalid': errors.has('email') }">
               <label>Email</label>
               <md-input
-                v-model="userdata.email"
+                v-model="userData.email"
                 v-validate="'required'"
                 data-vv-delay="1000" data-vv-name="email"
                 :has-error="errors.has('email')"
@@ -33,7 +33,7 @@
             <md-input-container :class="{'md-input-invalid': errors.has('password') }">
               <label>Password</label>
               <md-input
-                v-model="userdata.password"
+                v-model="userData.password"
                 v-validate="'required'"
                 data-vv-delay="1000" data-vv-name="password"
                 :has-error="errors.has('password')"
@@ -72,7 +72,7 @@ export default {
       loading: false,
       responseMessage: '',
       tags: '',
-      userdata: {
+      userData: {
         username: '',
         email: '',
         password: ''
@@ -82,11 +82,11 @@ export default {
   methods: {
     submitCreateUser (event) {
       this.loading = true
-      const api = `http://localhost:8091/topics/get`
+      const api = `http://localhost:8091/user/create`
       console.log('Api is ' + api)
       this.axios.post(api, {
-        params: {
-          ...this.userdata
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
         }
       }).then(response => {
         this.userdata = {}
