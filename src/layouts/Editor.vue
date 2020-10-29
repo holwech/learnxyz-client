@@ -1,0 +1,275 @@
+<template>
+  <div id="main-wrapper">
+    <Toolbar>
+      <b-spinner
+        v-if="RecordStore.loadingRecording && RecordStore.loadingMetadata"
+        label="Loading..."
+        variant="light"
+        style="margin:4px;"
+      />
+      <b-button
+        v-if="board.isPlaying"
+        variant="dark"
+        class="icon-button editor-button"
+        style="color:green;"
+        @click="pause"
+      >
+        <span class="material-icons">fiber_manual_record</span>
+      </b-button>
+      <b-button
+        v-else
+        variant="light"
+        class="icon-button editor-button"
+        @click="start"
+      >
+        <span class="material-icons">play_arrow</span>
+      </b-button>
+      <b-button
+        variant="light"
+        class="icon-button editor-button"
+        @click="restart"
+      >
+        <span class="material-icons">replay</span>
+      </b-button>
+      <b-button
+        variant="light"
+        class="icon-button editor-button"
+      >
+        {{
+          board.timer.timeMonitor.minutes +
+            ':' +
+            board.timer.timeMonitor.seconds +
+            ' / ' +
+            board.timer.timeMonitor.lengthMinutes +
+            ':' +
+            board.timer.timeMonitor.lengthSeconds
+        }}
+      </b-button>
+      <b-button
+        v-b-modal.modal-save-dialog
+        variant="light"
+        class="editor-button"
+      >
+        Save
+      </b-button>
+      <SaveDialog modal-id="modal-save-dialog" />
+      <b-button
+        v-b-modal.modal-help-dialog
+        variant="light"
+        class="editor-button"
+      >
+        Help
+      </b-button>
+      <HelpDialog modal-id="modal-help-dialog" />
+      <b-button
+        v-b-modal.modal-settings
+        variant="light"
+        class="editor-button"
+      >
+        Settings
+      </b-button>
+      <b-modal
+        id="modal-settings"
+        title="Settings"
+        ok-only
+      >
+        <b-form-group
+          label="Smoothness"
+          description="Set how smooth the free hand drawing should be"
+          label-for="input-smoothness"
+        >
+          <b-form-select
+            id="input-smoothness"
+            v-model="smoothnessSelected"
+            :options="smoothnessOptions"
+          />
+        </b-form-group>
+        <b-form-group
+          label="Color"
+          description="Set the color"
+          label-for="input-color"
+        >
+          <b-form-select
+            id="input-color"
+            v-model="colorSelected"
+            :options="colorOptions"
+          />
+        </b-form-group>
+        <b-form-group
+          label="Strok width"
+          description="Set the stroke width"
+          label-for="input-stroke-width"
+        >
+          <b-input-group
+            append="Fill"
+            class="mb-2"
+          >
+            <b-form-select
+              id="input-stroke-width"
+              v-model="strokeWidthSelected"
+              :options="strokeWidthOptions"
+            />
+            <b-input-group-append is-text>
+              <b-form-checkbox
+                v-model="fill"
+                switch
+                class="mr-n2"
+              >
+                <span class="sr-only">Switch for previous text input</span>
+              </b-form-checkbox>
+            </b-input-group-append>
+          </b-input-group>
+        </b-form-group>
+      </b-modal>
+      <router-link
+        :to="{ name: 'Explorer' }"
+        tag="button"
+        class="btn btn-outline-light"
+        style="margin-left:5px;"
+      >
+        Explore
+      </router-link>
+      <LoginButton />
+    </Toolbar>
+    <div id="board" />
+  </div>
+</template>
+
+<script lang="ts">
+import 'reflect-metadata';
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
+import HelpDialog from '@/components/HelpDialog.vue';
+import SaveDialog from '@/components/SaveDialog.vue';
+import Toolbar from '@/layouts/Toolbar.vue';
+import LoginButton from '@/components/LoginButton.vue';
+import Service from 'drawify/lib/Controllers/Service';
+import AppState from 'drawify/lib/State/AppState';
+import ServiceBuilder from 'drawify';
+import {
+  StrokeAttributes,
+  IAction
+} from 'drawify/lib/Interfaces/ActionInterfaces';
+import { AppStates } from 'drawify/lib/Interfaces/AppInterfaces';
+import { RecordController } from 'drawify/lib/Controllers/RecordController';
+import Timer from 'drawify/lib/Timer/Timer';
+import { PlayBaseController } from 'drawify/lib/Controllers/PlayBaseController';
+import RecordingMetadata from '../models/RecordingMetadata';
+import IRecordingEntry from '@/models/RecordingEntry';
+import { RecordStore } from '@/store/RecordStore';
+import Board from '@/utils/Board';
+import AudioHandler from '@/utils/AudioHandler';
+
+@Component({
+  components: {
+    HelpDialog,
+    Toolbar,
+    LoginButton,
+    SaveDialog
+  }
+})
+export default class Editor extends Vue {
+  @Prop(String) readonly id?: string;
+  private RecordStore = RecordStore;
+  private board = new Board();
+  private audio = new AudioHandler(navigator)
+  private smoothnessOptions = [
+    { value: 1, text: 'None' },
+    { value: 2, text: 'Low' },
+    { value: 4, text: 'Normal' },
+    { value: 6, text: 'High' },
+    { value: 8, text: 'Very high' }
+  ];
+  private smoothnessSelected = this.smoothnessOptions[2].value;
+  private colorOptions = [
+    { value: 'black', text: 'Black' },
+    { value: 'blue', text: 'Blue' },
+    { value: 'red', text: 'Red' },
+    { value: 'green', text: 'Green' }
+  ];
+  private colorSelected = this.colorOptions[0].value;
+  private strokeWidthOptions = [
+    { value: 1, text: '1px' },
+    { value: 2, text: '2px' },
+    { value: 4, text: '4px' },
+    { value: 6, text: '6px' },
+    { value: 8, text: '8px' }
+  ];
+  private strokeWidthSelected = this.strokeWidthOptions[1].value;
+  private fill = false;
+
+  @Watch('smoothnessSelected')
+  private setSmoothness(newVal: any, oldVal: any) {
+    console.log(newVal);
+    this.board.setStrokeAttribute(StrokeAttributes.BUFFER_SIZE, newVal);
+  }
+
+  @Watch('colorSelected')
+  private setColor(newVal: any, oldVal: any) {
+    this.board.setStrokeAttribute(StrokeAttributes.COLOR, newVal);
+  }
+
+  @Watch('strokeWidthSelected')
+  private setStrokeWidth(newVal: any, oldVal: any) {
+    this.board.setStrokeAttribute(StrokeAttributes.WIDTH, newVal);
+  }
+
+  @Watch('fill')
+  private setFill(newVal: any, oldVal: any) {
+    this.board.setStrokeAttribute(StrokeAttributes.FILL, newVal);
+  }
+
+  private async mounted(): Promise<void> {
+    this.board.create('board');
+    if (this.id) {
+      await Promise.all([
+        RecordStore.LoadMetadata({ id: this.id, auth: this.$auth }),
+        RecordStore.LoadRecording({ id: this.id, auth: this.$auth })
+      ]);
+      console.log(RecordStore.loadingMetadata);
+      console.log(RecordStore.recording);
+      this.board.setRecording(RecordStore.recording);
+    }
+  }
+
+  private async start() {
+    await this.audio.start();
+    this.board.controller!.start();
+  }
+
+  private async restart() {
+    this.board.controller?.restart()
+    this.audio.restart();
+  }
+
+  private async pause() {
+    this.board.controller!.pause();
+    this.audio.stop()
+  }
+
+  private sleep(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+}
+</script>
+
+<style scoped>
+h3 {
+  margin: 40px 0 0;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
+
+#svg {
+  border: 0px solid black;
+  touch-action: none;
+}
+</style>
