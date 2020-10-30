@@ -16,17 +16,6 @@ export default new Router({
       name: 'MainMenu'
     },
     {
-      path: '/editor',
-      component: Editor,
-      name: 'Editor'
-    },
-    {
-      path: '/editor',
-      props: true,
-      component: Editor,
-      name: 'EditorWithLoad'
-    },
-    {
       path: '/explore',
       component: Explorer,
       name: 'Explorer'

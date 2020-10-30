@@ -1,5 +1,4 @@
 import { VuexModule, Action, Module, Mutation } from 'vuex-class-modules';
-import { IAction } from 'drawify/lib/Interfaces/ActionInterfaces';
 import Auth from '@/utils/Auth';
 import { SaveDialogForm } from '@/models/SaveDialogForm';
 
@@ -8,7 +7,7 @@ class RecordStoreModule extends VuexModule {
   public loading: boolean = false;
   public loadingMetadata = false;
   public loadingRecording = false;
-  public recording: IAction[] = [];
+  public recording: any[] = [];
   public recordingMetadata: RecordingMetadata = {
     createdBy: '',
     description: '',
@@ -20,7 +19,7 @@ class RecordStoreModule extends VuexModule {
   public error: string = '';
 
   @Mutation
-  public SetRecording(recording: IAction[]) {
+  public SetRecording(recording: any[]) {
     this.recording = recording;
   }
 

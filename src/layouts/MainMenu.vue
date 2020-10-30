@@ -9,14 +9,6 @@
           Explore
         </b-btn>
       </router-link>
-      <router-link :to="{ name: 'Editor' }">
-        <b-btn
-          variant="outline-light"
-          style="margin-left:5px;"
-        >
-          Open editor
-        </b-btn>
-      </router-link>
       <LoginButton />
     </Toolbar>
     <b-container id="main-container">
@@ -35,52 +27,7 @@
       </b-row>
       <b-row>
         <b-col>
-          <b-card
-            class="svg-card"
-          >
-            <template slot="header">
-              Try it out yourself
-              <b-button
-                v-if="board.isPlaying"
-                variant="dark"
-                class="icon-button board-button"
-                style="color:red;"
-                @click="board.controller.pause()"
-              >
-                <span class="material-icons">fiber_manual_record</span>
-              </b-button>
-              <b-button
-                v-else
-                variant="outline-dark"
-                class="icon-button board-button"
-                @click="board.controller.start()"
-              >
-                <span class="material-icons">play_arrow</span>
-              </b-button>
-              <b-button
-                variant="outline-dark"
-                class="icon-button board-button"
-                @click="board.controller.restart()"
-              >
-                <span class="material-icons">replay</span>
-              </b-button>
-              <b-button
-                variant="none"
-                class="icon-button board-button"
-              >
-                {{
-                  board.timer.timeMonitor.minutes +
-                    ':' +
-                    board.timer.timeMonitor.seconds +
-                    ' / ' +
-                    board.timer.timeMonitor.lengthMinutes +
-                    ':' +
-                    board.timer.timeMonitor.lengthSeconds
-                }}
-              </b-button>
-            </template>
-            <div id="board" />
-          </b-card>
+          Hello
         </b-col>
       </b-row>
       <b-row>
@@ -138,7 +85,6 @@
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import LoginButton from '@/components/LoginButton.vue';
 import Toolbar from '@/layouts/Toolbar.vue';
-import Board from '@/utils/Board';
 
 interface RecordingMetadata {
   createdBy: string;
@@ -157,11 +103,6 @@ interface RecordingMetadata {
 })
 export default class MainMenu extends Vue {
   private entries = Array<RecordingMetadata>();
-  private board = new Board();
-
-  private mounted(): void {
-    this.board.create('board');
-  }
 }
 </script>
 

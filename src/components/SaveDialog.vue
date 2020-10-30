@@ -55,7 +55,6 @@
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import { SaveDialogForm } from '@/models/SaveDialogForm';
 import { RecordStore } from '@/store/RecordStore';
-import { IAction } from 'drawify/lib/Interfaces/ActionInterfaces';
 
 interface SaveDialogFormElement {
   value: string;

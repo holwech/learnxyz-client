@@ -1,13 +1,19 @@
 <template>
   <div id="main-wrapper">
     <Toolbar>
-      <router-link :to="{ name: 'Editor' }">
-        <b-btn variant="outline-light">Open editor</b-btn>
-      </router-link>
       <LoginButton />
     </Toolbar>
     <b-container id="main-container">
       <b-row align-h="center" style="margin-bottom: 50px;">
+        <b-col cols="4">
+          <details v-for="(values, key) in getDisciplines()" :key="key">
+            <summary>{{ key }}</summary>
+            <details v-for="value in values" :key="value">
+              <summary>{{ value }}</summary>
+              {{ value }}
+            </details>
+          </details>
+        </b-col>
         <b-col cols="6">
           <b-form-input v-model="searchInput" size="lg" placeholder="Search does not work yet" />
         </b-col>
@@ -32,9 +38,6 @@
               {{ entry.createdBy }}
             </b-card-text>
 
-            <router-link :to="{ name: 'EditorWithLoad', params: { id: entry.id } }">
-              <b-btn variant="outline-dark">Open</b-btn>
-            </router-link>
             <b-button
               v-if="canDelete(entry.createdBy)"
               v-b-modal.delete-entry
@@ -65,7 +68,7 @@
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import LoginButton from '@/components/LoginButton.vue';
 import Toolbar from '@/layouts/Toolbar.vue';
-import Board from '@/utils/Board';
+import disciplines from '@/settings/disciplines';
 
 interface RecordingMetadata {
   createdBy: string;
@@ -89,6 +92,10 @@ export default class Explorer extends Vue {
   private deleting = false;
   private selectedDelete?: string;
   private showModal = false;
+
+  private getDisciplines() {
+    return disciplines;
+  }
 
   private canDelete(id: string) {
     return this.$auth.idToken && this.$auth.idToken.uniqueId === id;
