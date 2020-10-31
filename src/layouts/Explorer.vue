@@ -6,13 +6,7 @@
     <b-container id="main-container">
       <b-row align-h="center" style="margin-bottom: 50px;">
         <b-col cols="4">
-          <details v-for="(values, key) in getDisciplines()" :key="key">
-            <summary>{{ key }}</summary>
-            <details v-for="value in values" :key="value">
-              <summary>{{ value }}</summary>
-              {{ value }}
-            </details>
-          </details>
+          <TopicList test="Test"></TopicList>
         </b-col>
         <b-col cols="6">
           <b-form-input v-model="searchInput" size="lg" placeholder="Search does not work yet" />
@@ -69,24 +63,16 @@ import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import LoginButton from '@/components/LoginButton.vue';
 import Toolbar from '@/layouts/Toolbar.vue';
 import disciplines from '@/settings/disciplines';
-
-interface RecordingMetadata {
-  createdBy: string;
-  description: string;
-  givenName: string;
-  id: string;
-  surname: string;
-  title: string;
-}
+import TopicList from '@/components/TopicList.vue';
 
 @Component({
   components: {
     LoginButton,
-    Toolbar
+    Toolbar,
+    TopicList
   }
 })
 export default class Explorer extends Vue {
-  private entries = Array<RecordingMetadata>();
   private searching = false;
   private searchInput = '';
   private deleting = false;
@@ -140,7 +126,6 @@ export default class Explorer extends Vue {
     );
 
     let responseJson = await response.json();
-    this.entries = responseJson;
     this.searching = false;
   }
 
