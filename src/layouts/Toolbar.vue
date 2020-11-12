@@ -42,24 +42,37 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
+import Auth from '@/utils/Auth';
+import { defineComponent, inject, ref } from 'vue';
 
-@Component
-export default class Toolbar extends Vue {
-  @Prop({ type: Boolean, default: false })
-  private readonly showCollapseButton?: Boolean;
+export default defineComponent({
+  name: 'Toolbar',
 
-  private collapseToolbar = false;
-  private betaText(): void {
-    this.$auth
-      .getAccessTokenAsync({
-        scopes: [
-          process.env.VUE_APP_SCOPE_WRITE,
-          process.env.VUE_APP_SCOPE_READ
-        ]
-      })
-      .then(token => console.log(token.accessToken));
-    console.log(this.$auth.account);
+  props: {
+    showCollapseButton: {
+      type: Boolean
+    }
+  },
+  setup(props) {
+    const collapseToolbar = ref(false);
+    const auth = inject('auth') as Auth;
+
+    const betaText = () => {
+      auth
+        .getAccessTokenAsync({
+          scopes: [
+            process.env.VUE_APP_SCOPE_WRITE,
+            process.env.VUE_APP_SCOPE_READ
+          ]
+        })
+        .then(token => console.log(token.accessToken));
+      console.log(auth.account);
+    };
+
+    return {
+      collapseToolbar,
+      betaText
+    };
   }
-}
+});
 </script>

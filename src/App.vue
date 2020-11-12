@@ -3,14 +3,11 @@
 </template>
 
 <script>
-import MainMenu from '@/layouts/MainMenu';
-import Vue from 'vue';
-import Component from 'vue-class-component';
+import { defineComponent } from 'vue';
 
-@Component({
-  components: {
-    MainMenu
-  }
-})
-export default class App extends Vue {}
+const app = defineComponent({
+  name: 'App',
+});
+
+export default app;
 </script>

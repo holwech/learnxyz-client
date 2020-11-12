@@ -1,18 +1,13 @@
-import Vue from 'vue';
+import { createApp, provide } from 'vue';
 import router from './router';
 import App from './App.vue';
 import store from './store/store';
 import Auth, { IUserFlows } from './utils/Auth';
 import { Configuration } from 'msal';
-import VueRouter from 'vue-router';
 import './registerServiceWorker';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import '@/assets/style/main.scss';
 
-Vue.use(BootstrapVue);
-Vue.use(IconsPlugin);
-
-Vue.config.productionTip = false;
 
 const config: Configuration = {
   auth: {
@@ -32,17 +27,22 @@ const userFlows: IUserFlows = {
   signup:
     'https://incrementally.b2clogin.com/incrementally.onmicrosoft.com/B2C_1_signup'
 };
-declare module 'vue/types/vue' {
-  interface Vue {
+
+declare module '@vue/runtime-core' {
+  interface ComponentCustomProperties {
     $auth: Auth;
   }
 }
-Vue.prototype.$auth = new Auth(config, userFlows);
 
-Vue.use(VueRouter);
+provide('auth', new Auth(config, userFlows));
 
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app');
+let app = createApp(App)
+    .use(router)
+    .use(store)
+    .use(BootstrapVue)
+    .use(IconsPlugin);
+
+//app.config.globalProperties.$auth = new Auth(config, userFlows);
+
+
+app.mount('#app');

@@ -33,23 +33,31 @@
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import { AuthenticationParameters } from 'msal';
 import { userStore } from '../store/UserStore';
+import { defineComponent, inject } from 'vue';
+import Auth from '@/utils/Auth';
 
-@Component
-export default class LoginButton extends Vue {
-  private user = userStore;
-
-  private async login() {
-    await this.user.login(this.$auth);
+export default defineComponent({
+  name: 'LoginButton',
+  setup() {
+    const user = userStore;
+    const auth = inject('auth') as Auth;
+    let login = async () => {
+      await user.login(auth);
+    };
+    let logout = async () => {
+      await user.logout(auth);
+    };
+    let signup = async () => {
+      await user.signup(auth);
+    };
+    return {
+      login,
+      logout,
+      signup,
+      user
+    };
   }
-
-  private async logout() {
-    await this.user.logout(this.$auth);
-  }
-
-  private async signup() {
-    await this.user.signup(this.$auth);
-  }
-}
+});
 </script>
 
 <style scoped></style>

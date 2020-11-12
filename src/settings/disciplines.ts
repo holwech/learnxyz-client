@@ -30,6 +30,6 @@ const disciplines = {
     'Engineering and technology',
     'Medicine and health sciences'
   ]
-}
+};
 
-export default disciplines
+export default disciplines;

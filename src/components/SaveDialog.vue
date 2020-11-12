@@ -43,7 +43,7 @@
       Cancel
     </b-button>
     <b-spinner
-      v-if="RecordStore.loading"
+      v-if="recordStore.loading"
       class="float-right"
       variant="primary"
       style="margin: 5px;"
@@ -55,6 +55,8 @@
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import { SaveDialogForm } from '@/models/SaveDialogForm';
 import { RecordStore } from '@/store/RecordStore';
+import { defineComponent, inject, reactive, watch } from 'vue';
+import Auth from '@/utils/Auth';
 
 interface SaveDialogFormElement {
   value: string;
@@ -66,61 +68,74 @@ interface SaveDialogFormTemplate {
   description: SaveDialogFormElement;
 }
 
-@Component
-export default class SaveDialog extends Vue {
-  @Prop(String) readonly modalId?: string;
-  private showModal = false;
-
-  private RecordStore = RecordStore;
-  private disableSave = true;
-  private rules = {
-    required: (v: string) => !!v || 'Required.',
-    min: (v: string) => v.length >= 4 || 'Min 4 characters',
-    emailMatch: () => 'The email and password you entered do not match'
-  };
-  private form: SaveDialogFormTemplate = {
-    title: {
-      value: '',
-      rules: [this.rules.required, this.rules.min]
-    },
-    description: {
-      value: '',
-      rules: [this.rules.required, this.rules.min]
+export default defineComponent({
+  props: {
+    modalId: {
+      type: String,
+      default: ''
     }
-  };
-
-  @Watch('form', { deep: true })
-  private verify(): void {
-    for (const [key, formValue] of Object.entries(this.form)) {
-      for (const rule of formValue.rules) {
-        if (!rule(formValue.value)) {
-          this.disableSave = true;
-          return;
-        }
-      }
-    }
-    this.disableSave = false;
-  }
-
-  @Watch('RecordStore.loading')
-  private closeOnLoadingDone() {
-    if (!this.RecordStore.loading) {
-      this.showModal = false;
-    }
-  }
-
-  private close(): void {
-    this.$emit('close');
-  }
-
-  private save(): void {
-    RecordStore.Save({
-      auth: this.$auth,
-      formData: {
-        title: this.form.title.value,
-        description: this.form.description.value
+  },
+  setup(props) {
+    let showModal = false;
+    let recordStore = RecordStore;
+    let disableSave = true;
+    const auth = inject('auth') as Auth;
+    let rules = {
+      required: (v: string) => !!v || 'Required.',
+      min: (v: string) => v.length >= 4 || 'Min 4 characters',
+      emailMatch: () => 'The email and password you entered do not match'
+    };
+    let form: SaveDialogFormTemplate = reactive({
+      title: {
+        value: '',
+        rules: [rules.required, rules.min]
+      },
+      description: {
+        value: '',
+        rules: [rules.required, rules.min]
       }
     });
+
+    watch(form, (val, oldVal) => {
+      for (const [key, formValue] of Object.entries(val)) {
+        for (const rule of formValue.rules) {
+          if (!rule(formValue.value)) {
+            disableSave = true;
+            return;
+          }
+        }
+      }
+      disableSave = false;
+    }, { deep: true });
+
+    watch(recordStore.loading, (val, oldVal) => {
+      if (!recordStore.loading) {
+        showModal = false;
+      }
+    }, { deep: true });
+
+    const save = () => {
+      RecordStore.Save({
+        auth: auth,
+        formData: {
+          title: form.title.value,
+          description: form.description.value
+        }
+      });
+    };
+
+    return {
+      showModal,
+      recordStore,
+      disableSave,
+      save,
+      form
+    };
+  },
+  methods: {
+    close(): void {
+      this.$emit('close');
+    },
   }
-}
+});
 </script>

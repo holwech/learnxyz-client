@@ -1,5 +1,5 @@
 // user-module.ts
-import { VuexModule, Module, Mutation, Action } from 'vuex-class-modules';
+import { VuexModule, Module, Action } from 'vuex-class-modules';
 import Auth from '@/utils/Auth';
 
 @Module({ generateMutationSetters: true })

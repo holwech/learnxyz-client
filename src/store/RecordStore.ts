@@ -4,7 +4,7 @@ import { SaveDialogForm } from '@/models/SaveDialogForm';
 
 @Module({ generateMutationSetters: true })
 class RecordStoreModule extends VuexModule {
-  public loading: boolean = false;
+  public loading: Ref<boolean> = ref(false);
   public loadingMetadata = false;
   public loadingRecording = false;
   public recording: any[] = [];
@@ -25,7 +25,7 @@ class RecordStoreModule extends VuexModule {
 
   @Action
   public async Save(args: { auth: Auth, formData: SaveDialogForm }) {
-    this.loading = true;
+    this.loading.value = true;
     console.log('Saving recording...');
     let log = JSON.stringify(this.recording);
     let storageSpace = (encodeURI(log).split(/%..|./).length - 1) / 1000000;
@@ -54,7 +54,7 @@ class RecordStoreModule extends VuexModule {
       )
       .then(res => {
         console.log(res);
-        this.loading = false;
+        this.loading.value = false;
       });
   }
 
@@ -105,4 +105,5 @@ class RecordStoreModule extends VuexModule {
 
 import store from './store';
 import RecordingMetadata from '@/models/RecordingMetadata';
+import { Ref, ref } from 'vue';
 export const RecordStore = new RecordStoreModule({ store, name: 'RecordStore' });
