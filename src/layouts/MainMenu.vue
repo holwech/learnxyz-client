@@ -82,28 +82,17 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import LoginButton from '@/components/LoginButton.vue';
 import Toolbar from '@/layouts/Toolbar.vue';
+import { defineComponent, ref } from '@vue/composition-api';
 
-interface RecordingMetadata {
-  createdBy: string;
-  description: string;
-  givenName: string;
-  id: string;
-  surname: string;
-  title: string;
-}
-
-@Component({
+export default defineComponent({
+  name: 'MainMenu',
   components: {
     LoginButton,
     Toolbar
   }
-})
-export default class MainMenu extends Vue {
-  private entries = Array<RecordingMetadata>();
-}
+});
 </script>
 
 <style lang="scss">

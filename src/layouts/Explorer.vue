@@ -6,7 +6,7 @@
     <b-container id="main-container">
       <b-row align-h="center" style="margin-bottom: 50px;">
         <b-col cols="4">
-          <TopicList test="Test"></TopicList>
+          <TopicList></TopicList>
         </b-col>
         <b-col cols="6">
           <b-form-input v-model="searchInput" size="lg" placeholder="Search does not work yet" />
@@ -15,7 +15,7 @@
       <b-row align-h="center" class="result-explore-main">
         <b-col cols="8">
           <b-spinner
-            v-if="searching"
+            v-if="getEntriesLoading"
             label="Loading..."
             size="lg"
             style="width: 3rem; height: 3rem;"
@@ -47,12 +47,12 @@
         <b-button
           variant="danger"
           class="float-right"
-          :disabled="deleting"
+          :disabled="deleteEntryLoading"
           style="margin-left:5px;"
           @click="deleteEntry"
         >Delete</b-button>
-        <b-button class="float-right" :disabled="deleting" @click="showModal = false">Cancel</b-button>
-        <b-spinner v-if="deleting" class="float-right" variant="primary" style="margin: 5px;" />
+        <b-button class="float-right" :disabled="deleteEntryLoading" @click="showModal = false">Cancel</b-button>
+        <b-spinner v-if="deleteEntryLoading" class="float-right" variant="primary" style="margin: 5px;" />
       </b-modal>
     </b-container>
   </div>
@@ -62,78 +62,54 @@
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import LoginButton from '@/components/LoginButton.vue';
 import Toolbar from '@/layouts/Toolbar.vue';
-import disciplines from '@/settings/disciplines';
+import disciplineList from '@/settings/disciplines';
 import TopicList from '@/components/TopicList.vue';
+import { defineComponent, inject, onMounted, ref } from '@vue/composition-api';
+import Auth from '@/utils/Auth';
+import { useDeleteEntry, useGetEntries } from '@/utils/Api';
 
-@Component({
+export default defineComponent({
   components: {
     LoginButton,
     Toolbar,
     TopicList
-  }
-})
-export default class Explorer extends Vue {
-  private searching = false;
-  private searchInput = '';
-  private deleting = false;
-  private selectedDelete?: string;
-  private showModal = false;
+  },
+  setup() {
+    let disciplines = ref(disciplineList);
+    let searchInput = ref('');
+    let selectedDelete = ref('');
+    let entries = ref();
+    let showModal = ref(false);
+    const auth = inject('auth') as Auth;
+    const { deleteEntry, deleteEntryLoading } = useDeleteEntry(auth, selectedDelete);
+    let { getEntries, getEntriesLoading } = useGetEntries(auth, entries);
 
-  private getDisciplines() {
-    return disciplines;
-  }
+    const openDeleteModal = (entryId: string) => {
+      const selectedDelete = ref(entryId);
+    };
 
-  private canDelete(id: string) {
-    return this.$auth.idToken && this.$auth.idToken.uniqueId === id;
-  }
+    const canDelete = (id: string) => {
+      return auth.idToken && auth.idToken.uniqueId === id;
+    };
 
-  private openDeleteModal(entryId: string): void {
-    this.selectedDelete = entryId;
-  }
+    onMounted(() => {
+      getEntries();
+    });
 
-  private async deleteEntry() {
-    this.deleting = true;
-    const res = await this.$auth.query(
-      process.env.VUE_APP_URL + '/api/recording/' + this.selectedDelete,
-      {
-        scopes: [
-          process.env.VUE_APP_SCOPE_WRITE,
-          process.env.VUE_APP_SCOPE_READ
-        ]
-      },
-      'DELETE',
-      null,
-      true
-    );
-    console.log(res);
-    this.deleting = false;
-    this.showModal = false;
-    this.getEntries();
+    return {
+      openDeleteModal,
+      searchInput,
+      canDelete,
+      onMounted,
+      getEntries,
+      getEntriesLoading,
+      deleteEntry,
+      deleteEntryLoading,
+      entries,
+      showModal
+    };
   }
-
-  private async getEntries() {
-    let response = await this.$auth.query(
-      process.env.VUE_APP_URL + '/api/metadata',
-      {
-        scopes: [
-          process.env.VUE_APP_SCOPE_WRITE,
-          process.env.VUE_APP_SCOPE_READ
-        ]
-      },
-      'GET',
-      null,
-      false
-    );
-
-    let responseJson = await response.json();
-    this.searching = false;
-  }
-
-  private mounted(): void {
-    this.searching = true;
-    this.getEntries();
-  }
-}
+});
 </script>
 
 
