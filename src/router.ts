@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import Editor from '@/layouts/Editor.vue';
+import ResourceView from '@/layouts/ResourceView.vue';
 import MainMenu from '@/layouts/MainMenu.vue';
 import Explorer from '@/layouts/Explorer.vue';
 import Router from 'vue-router';
@@ -19,6 +19,11 @@ export default new Router({
       path: '/explore',
       component: Explorer,
       name: 'Explorer'
+    },
+    {
+      path: '/resource/:id',
+      component: ResourceView,
+      name: 'ResourceView'
     }
   ]
 });
