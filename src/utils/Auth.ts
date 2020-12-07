@@ -50,7 +50,7 @@ export default class Auth {
   public async getAccessTokenAsync(
     requestObject: AuthenticationParameters
   ): Promise<AuthResponse> {
-    if (this.account && Number(this.account.idToken.exp) > Date.now() / 1000) {
+    if (this.isLoggedIn()) {
       try {
         return this.auth.acquireTokenSilent(requestObject);
       } catch (e) {
@@ -64,6 +64,10 @@ export default class Auth {
       await this.login();
       return this.getAccessTokenAsync(requestObject);
     }
+  }
+
+  public isLoggedIn(): boolean | undefined {
+    return this.account && Number(this.account.idToken.exp) > Date.now() / 1000;
   }
 
   public async query(
