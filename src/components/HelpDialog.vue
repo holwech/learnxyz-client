@@ -15,12 +15,15 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
+import { defineComponent } from '@vue/composition-api';
 
-@Component
-export default class HelpDialog extends Vue {
-  @Prop(String) readonly modalId?: string;
-
-
-}
+export default defineComponent({
+  name: 'HelpDialog',
+  props: {
+    modalId: {
+      type: String,
+      default: 'Test'
+    }
+  }
+});
 </script>
