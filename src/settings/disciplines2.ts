@@ -1,3 +1,28 @@
+const disciplines2 = [
+    {
+        'name': 'root',
+        'children': [
+            {
+                'name': 'Arts',
+                'children': [
+                    { 'name': 'Performing arts' },
+                    { 'name': 'Visual arts' }
+                ]
+            },
+            {
+                'name': 'Humanities',
+                'children': [
+                    { 'name': 'Geography' },
+                    { 'name': 'History' },
+                    { 'name': 'Languages and literature' },
+                    { 'name': 'Philosophy' },
+                    { 'name': 'Theology' }
+                ],
+            }
+        ]
+    }
+];
+
 const disciplines = {
   'Arts': {
     'Performing arts': {},
