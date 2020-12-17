@@ -84,7 +84,8 @@ export default  defineComponent({
     let rules = {
       required: (v: string) => !!v || 'Required.',
       min: (v: string) => v.length >= 4 || 'Min 4 characters',
-      emailMatch: () => 'The email and password you entered do not match'
+      emailMatch: () => 'The email and password you entered do not match',
+      urlMatch: (v: string) => verifyUrl(v) || 'The url is not valid'
     };
     let form: SaveDialogFormTemplate = reactive({
       title: {
@@ -97,7 +98,7 @@ export default  defineComponent({
       },
       url: {
         value: '',
-        rules: [rules.required, rules.min]
+        rules: [rules.required, rules.min, rules.urlMatch]
       }
     });
 
@@ -140,12 +141,37 @@ export default  defineComponent({
   }
 });
 
-// private getId(url: string) {
-//   const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-//   const match = url.match(regExp);
+const verifyUrl = function (url: string) {
+  if (!validURL(url)) {
+    return false;
+  }
+  if (isYoutube(url) && getYoutubeId(url) === null) {
+    return false
+  }
+  return true
+}
 
-//   return (match && match[2].length === 11)
-//     ? match[2]
-//     : null;
-// }
+const isYoutube = function(url: string) {
+  return url.includes("youtu");
+}
+
+const validURL = function (url: string) {
+  var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+    '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+    '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+    '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+  return !!pattern.test(url);
+}
+
+const getYoutubeId = function (url: string) {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  const match = url.match(regExp);
+  console.log(match);
+
+  return (match && match[2].length === 11)
+    ? match[2]
+    : null;
+}
 </script>
