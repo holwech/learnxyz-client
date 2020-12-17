@@ -6,7 +6,7 @@ import Router from 'vue-router';
 import './registerServiceWorker';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import '@/assets/style/main.scss';
-import VueCompositionAPI, { createApp } from '@vue/composition-api';
+import VueCompositionAPI from '@vue/composition-api';
 import Auth, { IUserFlows } from './utils/Auth';
 import { Configuration } from 'msal';
 
