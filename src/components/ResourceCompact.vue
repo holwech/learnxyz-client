@@ -2,14 +2,13 @@
   <b-card
     :key="entry.id"
     :title="entry.title"
-    class="result-explore"
+    :sub-title="dateToDateString(entry.createdAt)"
+    class="compact-view"
     @click="openExpandeView"
   >
     <b-card-text>
-      hello
       {{ entry.description }}
       {{ entry.givenName }}
-      {{ entry.createdAt }}
     </b-card-text>
 
     <b-button
@@ -30,6 +29,7 @@ import { SaveDialogFormTemplate } from '@/models/SaveDialogForm';
 import Auth from '@/utils/Auth';
 import Router from 'vue-router';
 import Resource from '@/models/Resource';
+import { dateToDateString } from '@/utils/formatters';
 
 export default defineComponent({
   name: 'ResourceCompact',
@@ -41,6 +41,7 @@ export default defineComponent({
   },
   setup(props) {
     const router = inject('router') as Router;
+
     const canDelete = (id: string) => {
       const auth = inject('auth') as Auth;
       return auth.idToken && auth.idToken.uniqueId === id;
@@ -52,8 +53,16 @@ export default defineComponent({
 
     return {
       canDelete,
-      openExpandeView
+      openExpandeView,
+      dateToDateString
     };
   }
 });
 </script>
+
+<style lang="scss">
+.compact-view {
+  width: 100%;
+  cursor: pointer;
+}
+</style>>
