@@ -70,7 +70,11 @@ export function useGetEntries(auth: Auth) {
     );
 
     getEntriesLoading.value = false;
-    return await response.json();
+    let entries = await response.json();
+    for (let i = 0; i < entries.length; i++) {
+      entries[i].createdAt = new Date(entries[i].createdAt);
+    }
+    return entries;
   };
   return {
     getEntries,
